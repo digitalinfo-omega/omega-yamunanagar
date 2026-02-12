@@ -62,6 +62,30 @@
   .bg-omega {
     @apply bg-[#e56e1b];
   }
+  .heading {
+    @apply text-[24px] md:text-[32px];
+  }
+  .para {
+    @apply text-[20px] md:text-[24px];
+  }
+  .sm-para {
+    @apply md:text-[16px] text-[14px];
+  }
+  .xl-para {
+    @apply md:text-[20px] text-[18px];
+  }
+  .xs-para {
+    @apply text-[14px];
+  }
+  .container {
+    @apply w-[90%] mx-auto;
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      @apply w-[calc(100%-200px)];
+    }
+  }
 }
 
 @theme inline {
@@ -78,7 +102,7 @@
   --popover-foreground: oklch(0.145 0 0);
   --primary: oklch(0.205 0 0);
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: #effbfc4c;
+  --secondary: #299fb0;
   --light-teal: #299fb0;
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
