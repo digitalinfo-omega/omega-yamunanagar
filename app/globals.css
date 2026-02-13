@@ -72,7 +72,7 @@
     @apply md:text-[16px] text-[14px];
   }
   .xl-para {
-    @apply md:text-[20px] text-[18px];
+    @apply md:text-[18px] text-[16px];
   }
   .xs-para {
     @apply text-[14px];

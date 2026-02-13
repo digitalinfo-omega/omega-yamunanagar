@@ -5,7 +5,7 @@ import { Calendar } from "lucide-react";
 
 const BookAppointment = () => {
   return (
-    <div className="fixed right-0 top-[25%] z-50">
+    <div className="fixed right-0 top-[25%] z-50 pointer-events-none">
       <Link
         href=""
         className="
@@ -14,6 +14,7 @@ const BookAppointment = () => {
           px-5 py-3
           rounded-t-2xl
           shadow-xl
+          pointer-events-auto
             -rotate-90
           origin-bottom-right
           hover:bg-[#238b9a]

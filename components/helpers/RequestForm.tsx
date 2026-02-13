@@ -1,17 +1,16 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
-
+import { createAppointment } from "@/lib/api/appointment";
 import {
   appointmentSchema,
   AppointmentFormValues,
 } from "@/schemas/appointment.schema";
-import { createAppointment } from "@/lib/api/appointment";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
-import { services } from "../constants/MultispecialtyServices";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useCallback, useState } from "react";
+import { UploadCloud, X } from "lucide-react";
 
 export default function RequestForm() {
   const {
@@ -21,135 +20,249 @@ export default function RequestForm() {
     formState: { errors },
   } = useForm<AppointmentFormValues>({
     resolver: zodResolver(appointmentSchema),
-    defaultValues: {
-      department: "",
-    },
   });
+
+  const [files, setFiles] = useState<File[]>([]);
+  const [dragActive, setDragActive] = useState(false);
 
   const mutation = useMutation({
     mutationFn: createAppointment,
     onSuccess: () => {
-      toast.success("Appointment booked successfully");
+      toast.success("Appointment submitted successfully");
       reset();
+      setFiles([]);
     },
-    onError: () => {
-      toast.error("Failed to book appointment");
-    },
+    onError: () => toast.error("Submission failed"),
   });
 
+  /* ================= FILE VALIDATION ================= */
+
+  const validateFiles = (fileList: FileList) => {
+    const validFiles: File[] = [];
+    const allowedTypes = ["application/pdf", "image/jpeg", "image/png"];
+    const maxSize = 10 * 1024 * 1024;
+
+    Array.from(fileList).forEach((file) => {
+      if (!allowedTypes.includes(file.type)) {
+        toast.error("Only PDF, JPG, PNG files are allowed.");
+        return;
+      }
+
+      if (file.size > maxSize) {
+        toast.error("File size must be under 10MB.");
+        return;
+      }
+
+      validFiles.push(file);
+    });
+
+    return validFiles;
+  };
+
+  const handleFiles = (fileList: FileList) => {
+    const validated = validateFiles(fileList);
+    if (!validated || validated.length === 0) return;
+
+    setFiles((prev) => [...prev, ...validated]);
+  };
+
+  const removeFile = (index: number) => {
+    setFiles((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const handleDrop = useCallback((e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setDragActive(false);
+    if (e.dataTransfer.files) {
+      handleFiles(e.dataTransfer.files);
+    }
+  }, []);
+
+  /* ================= SUBMIT ================= */
+
   const onSubmit = (data: AppointmentFormValues) => {
-    mutation.mutate(data);
+    const formData = new FormData();
+
+    Object.entries(data).forEach(([key, value]) => {
+      if (value) formData.append(key, value as string);
+    });
+
+    files.forEach((file) => {
+      formData.append("medicalRecords", file);
+    });
+
+    mutation.mutate(formData as any);
   };
 
   return (
-    <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
-      {/* Row 1 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="flex flex-col">
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
+      {/* GRID FIELDS */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Full Name */}
+        <div className="flex flex-col gap-2">
+          <label className="text-sm font-medium">Full Name*</label>
           <input
             {...register("name")}
-            placeholder="Name"
-            className="w-full border rounded-md px-4 py-3 text-sm"
+            placeholder="Enter Your Full Name"
+            className="bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm"
           />
-          <p className="mt-1 text-xs text-red-500">{errors.name?.message}</p>
+          <p className="text-xs text-red-500">{errors.name?.message}</p>
         </div>
 
         {/* Contact */}
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-2">
+          <label className="text-sm font-medium">Contact*</label>
           <input
             {...register("contact")}
-            placeholder="Contact"
-            className="w-full border rounded-md px-4 py-3 text-sm"
+            placeholder="+91 XXXXX XXXXX"
+            className="bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm"
           />
-          <p className="mt-1 text-xs text-red-500">{errors.contact?.message}</p>
+          <p className="text-xs text-red-500">{errors.contact?.message}</p>
         </div>
-      </div>
 
-      {/* Row 2 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input
-          type="email"
-          {...register("email")}
-          placeholder="Email ID"
-          className="w-full border rounded-md px-4 py-3 text-sm"
-        />
-
-        <div className="relative">
-          <select
-            {...register("department")}
-            className="w-full border rounded-md px-4 py-3 text-sm text-gray-500 "
-          >
-            <option value="" disabled>
-              Select Department
-            </option>
-
-            {services.map((service) => (
-              <option
-                key={service.title}
-                value={service.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}
-              >
-                {service.title}
-              </option>
-            ))}
-          </select>
+        {/* Email */}
+        <div className="flex flex-col gap-2">
+          <label className="text-sm font-medium">Email Address*</label>
+          <input
+            type="email"
+            {...register("email")}
+            placeholder="your@gmail.com"
+            className="bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm"
+          />
         </div>
-      </div>
 
-      <p className="text-xs text-red-500">{errors.department?.message}</p>
+        {/* Age */}
+        <div className="flex flex-col gap-2">
+          <label className="text-sm font-medium">Age*</label>
+          <input
+            placeholder="Enter your age"
+            className="bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm"
+          />
+        </div>
 
-      {/* Row 3 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="flex flex-col gap-1">
-          <label className="text-xs font-medium text-gray-600">
-            Preferred Date
+        {/* Diagnosis */}
+        <div className="flex flex-col gap-2">
+          <label className="text-sm font-medium">
+            Cancer Diagnosis/Type (if know)
+          </label>
+          <input
+            placeholder="e.g., Breast Cancer, Lung Cancer"
+            className="bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm"
+          />
+        </div>
+
+        {/* Referring Doctor */}
+        <div className="flex flex-col gap-2">
+          <label className="text-sm font-medium">
+            Referring Doctor (if applicable)
+          </label>
+          <input
+            placeholder="Doctor’s name"
+            className="bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm"
+          />
+        </div>
+
+        {/* Previous Treatment */}
+        <div className="flex flex-col gap-2">
+          <label className="text-sm font-medium">
+            Previous Treatment (if any)
+          </label>
+          <input
+            placeholder="e.g., Surgery, Chemotherapy"
+            className="bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm"
+          />
+        </div>
+
+        {/* Consultation Date */}
+        <div className="flex flex-col gap-2">
+          <label className="text-sm font-medium">
+            Preferred Consultation Date*
           </label>
           <input
             type="date"
-            {...register("date")}
-            className="w-full border rounded-md px-4 py-3 text-sm"
-          />
-        </div>
-
-        <div className="flex flex-col gap-1">
-          <label className="text-xs font-medium text-gray-600">
-            Preferred Time
-          </label>
-          <input
-            type="time"
-            {...register("time")}
-            className="w-full border rounded-md px-4 py-3 text-sm"
+            className="bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm"
           />
         </div>
       </div>
 
-      {/* Textarea */}
-      <textarea
-        {...register("message")}
-        placeholder="Your Message"
-        rows={4}
-        className="w-full border rounded-md px-4 py-3 text-sm resize-none"
-      />
+      {/* Upload Section */}
+      <div className="flex flex-col gap-2">
+        <label className="text-sm font-medium">Medical Records Upload</label>
 
-      {/* Button */}
+        <div
+          onDragOver={(e) => {
+            e.preventDefault();
+            setDragActive(true);
+          }}
+          onDragLeave={() => setDragActive(false)}
+          onDrop={handleDrop}
+          className={`relative border-2 border-dashed rounded-xl h-36 flex flex-col items-center justify-center text-sm transition ${
+            dragActive
+              ? "border-accent bg-accent/10"
+              : "border-gray-300 bg-gray-100"
+          }`}
+        >
+          <UploadCloud size={24} className="mb-2 text-gray-600" />
+
+          <p className="text-gray-600 text-center px-4">
+            Drag & drop files here, or{" "}
+            <span className="text-accent underline">click to browse</span>
+          </p>
+
+          <p className="text-xs text-gray-500 mt-1">PDF, JPG, PNG up to 10MB</p>
+
+          <input
+            type="file"
+            multiple
+            accept=".pdf,.jpg,.jpeg,.png"
+            className="absolute inset-0 opacity-0 cursor-pointer"
+            onChange={(e) => {
+              if (e.target.files) {
+                handleFiles(e.target.files);
+              }
+            }}
+          />
+        </div>
+
+        {/* File List */}
+        {files.length > 0 && (
+          <div className="flex flex-col gap-2 mt-2">
+            {files.map((file, index) => (
+              <div
+                key={index}
+                className="flex items-center justify-between bg-white border rounded-lg px-4 py-2 text-sm"
+              >
+                <span className="truncate">{file.name}</span>
+                <button
+                  type="button"
+                  onClick={() => removeFile(index)}
+                  className="text-red-500 hover:text-red-600"
+                >
+                  <X size={16} />
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Additional Info */}
+      <div className="flex flex-col gap-2">
+        <label className="text-sm font-medium">Additional Information</label>
+        <textarea
+          rows={4}
+          placeholder="Any additional information you'd like us to know..."
+          className="bg-white border border-gray-300 rounded-lg px-4 py-3 text-sm resize-none"
+        />
+      </div>
+
+      {/* Submit */}
       <button
         type="submit"
         disabled={mutation.isPending}
-        className="group relative overflow-hidden w-full flex items-center justify-center gap-2
-  text-accent font-semibold py-3 rounded-md border border-accent"
+        className="w-full bg-[#E56E1B] text-white py-4 rounded-lg font-medium hover:opacity-90 transition"
       >
-        {/* Center Fill */}
-        <span className="absolute inset-0 bg-accent scale-0 group-hover:scale-100 transition-transform duration-300 ease-out origin-center" />
-
-        {/* Content */}
-        <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
-          {mutation.isPending ? "Submitting..." : "Book an Appointment"}
-        </span>
-
-        <ArrowUpRight
-          size={20}
-          className="relative z-10 transition-all duration-300 ease-out
-    group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-white"
-        />
+        {mutation.isPending ? "Submitting..." : "Submit Consolation Request"}
       </button>
     </form>
   );
