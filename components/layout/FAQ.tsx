@@ -118,8 +118,8 @@ const FAQ = () => {
     <section className="md:py-20 py-10">
       <div className="container">
         {/* Header */}
-        <div className="w-full flex items-center justify-center flex-col md:gap-7 gap-2 mb-14">
-          <h3 className="bg-secondary/20 text-secondary md:px-8 py-3 rounded-full sm-para font-semibold">
+        <div className="w-full flex items-center justify-center flex-col md:gap-7 gap-2 md:mb-14 mb-5">
+          <h3 className="bg-secondary/20 text-secondary md:px-8 px-10 py-3 rounded-full sm-para font-semibold">
             FAQ
           </h3>
           <h1 className="heading">
@@ -134,7 +134,7 @@ const FAQ = () => {
         {/* Accordion Grid */}
         <div className="grid md:grid-cols-2 grid-cols-1 md:gap-10 gap-3">
           {faqData.map((section, sectionIndex) => (
-            <div key={sectionIndex} className="p-8 space-y-6">
+            <div key={sectionIndex} className="md:p-8 p-4 space-y-6">
               {/* Section Title */}
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 flex items-center justify-center rounded-full bg-secondary text-white font-bold">

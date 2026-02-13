@@ -139,7 +139,7 @@ export default function CancerTreatmentSection() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="container">
         {/* HEADER */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-semibold text-gray-900">
@@ -196,7 +196,7 @@ export default function CancerTreatmentSection() {
           </div>
 
           {/* Description */}
-          <p className="text-gray-600 text-sm leading-relaxed">
+          <p className="text-gray-600 xl-para leading-relaxed">
             {activeData.description}
           </p>
 
@@ -205,7 +205,7 @@ export default function CancerTreatmentSection() {
             {/* Techniques */}
             <div>
               <h4 className="font-semibold mb-4">Treatment Techniques</h4>
-              <ul className="space-y-3 text-sm">
+              <ul className="space-y-3 xl-para">
                 {activeData.techniques.map((item, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <CheckCircle size={16} className="text-accent mt-1" />
@@ -218,7 +218,7 @@ export default function CancerTreatmentSection() {
             {/* Cancers */}
             <div>
               <h4 className="font-semibold mb-4">Cancers Treated</h4>
-              <ul className="space-y-3 text-sm">
+              <ul className="space-y-3 xl-para">
                 {activeData.cancers.map((item, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <CheckCircle size={16} className="text-orange-500 mt-1" />
@@ -231,7 +231,7 @@ export default function CancerTreatmentSection() {
             {/* Benefits */}
             <div>
               <h4 className="font-semibold mb-4">Key Benefits</h4>
-              <ul className="space-y-3 text-sm">
+              <ul className="space-y-3 xl-para">
                 {activeData.benefits.map((item, i) => (
                   <li
                     key={i}

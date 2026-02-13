@@ -34,60 +34,66 @@ const StatCard: React.FC<StatCardProps> = ({ title, subtitle }) => {
 
 const OncologySection = () => {
   return (
-    <section className="bg-white py-16 px-4 sm:px-8 md:px-12 lg:px-24 font-sans">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
-        {/* --- Left Column: Content & Stats --- */}
-        <div>
-          <h1 className="heading font-medium text-gray-900 leading-tight mb-8">
-            <span className="text-accent">Expert</span> Radiation Oncology Care
-            <br />
-            in <span className="text-accent">Yamuna Nagar</span>
-          </h1>
+    <section className="md:py-20 py-10">
+      <div className="container">
+        <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-16 gap-7">
+          {/* --- Left Column: Content & Stats --- */}
+          <div>
+            <h1 className="heading font-medium text-gray-900 leading-tight mb-8">
+              <span className="text-accent">Expert</span> Radiation Oncology
+              Care
+              <br />
+              in <span className="text-accent">Yamuna Nagar</span>
+            </h1>
 
-          <div className="text-black space-y-6 mb-12 leading-relaxed">
-            <p>
-              Omega Hospitals Yamuna Nagar brings world-class radiation oncology
-              services to the heart of Haryana. As part of the renowned Omega
-              Hospitals network, a Morgan Stanley Enterprise, we combine
-              cutting-edge radiation therapy technology with compassionate,
-              patient-centered cancer care.
-            </p>
-            <p>
-              Our state-of-the-art radiation oncology department serves as a
-              cornerstone in comprehensive cancer treatment. Whether you're
-              beginning your cancer journey or continuing treatment, our team of
-              experienced radiation oncologists, medical physicists, and
-              specialized therapists ensures precise, effective therapy
-              delivered with dignity and care.
-            </p>
+            <div className="text-black space-y-6 mb-12 leading-relaxed">
+              <p>
+                Omega Hospitals Yamuna Nagar brings world-class radiation
+                oncology services to the heart of Haryana. As part of the
+                renowned Omega Hospitals network, a Morgan Stanley Enterprise,
+                we combine cutting-edge radiation therapy technology with
+                compassionate, patient-centered cancer care.
+              </p>
+              <p>
+                Our state-of-the-art radiation oncology department serves as a
+                cornerstone in comprehensive cancer treatment. Whether you're
+                beginning your cancer journey or continuing treatment, our team
+                of experienced radiation oncologists, medical physicists, and
+                specialized therapists ensures precise, effective therapy
+                delivered with dignity and care.
+              </p>
+            </div>
+
+            {/* 2x2 Stats Grid */}
+            <div className="grid grid-cols-2 gap-4">
+              <StatCard
+                title="500+"
+                subtitle={["Cancer Patients", "Treated Annually"]}
+              />
+              <StatCard
+                title="24/7"
+                subtitle={["Oncology", "Support Services"]}
+              />
+              <StatCard
+                title="NABH"
+                subtitle={["Accredited", "Cancer Center"]}
+              />
+              <StatCard
+                title="ACR"
+                subtitle={["Radiation", "Oncology Standards"]}
+              />
+            </div>
           </div>
 
-          {/* 2x2 Stats Grid */}
-          <div className="grid grid-cols-2 gap-4">
-            <StatCard
-              title="500+"
-              subtitle={["Cancer Patients", "Treated Annually"]}
-            />
-            <StatCard
-              title="24/7"
-              subtitle={["Oncology", "Support Services"]}
-            />
-            <StatCard title="NABH" subtitle={["Accredited", "Cancer Center"]} />
-            <StatCard
-              title="ACR"
-              subtitle={["Radiation", "Oncology Standards"]}
+          <div className="relative w-full h-134 lg:h-full">
+            <Image
+              src="/images/oncology.webp"
+              alt="Radiation Oncology Care"
+              fill
+              className="object-contain"
+              priority
             />
           </div>
-        </div>
-
-        <div className="relative w-full h-100 lg:h-full">
-          <Image
-            src="/images/oncology.webp"
-            alt="Radiation Oncology Care"
-            fill
-            className="object-contain"
-            priority
-          />
         </div>
       </div>
     </section>

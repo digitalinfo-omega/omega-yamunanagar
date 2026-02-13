@@ -9,8 +9,10 @@ const GetInTouch = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* LEFT SIDE */}
           <div>
-            <h2 className="heading font-semibold mb-4">Get in Touch</h2>
-            <p className="text-gray-300 mb-10 xl-para">
+            <h2 className="heading font-semibold mb-4 md:text-start text-center">
+              Get in Touch
+            </h2>
+            <p className="text-gray-300 mb-10 xl-para md:text-start text-center">
               Our team is here to help you with appointments, information, and
               support.
             </p>

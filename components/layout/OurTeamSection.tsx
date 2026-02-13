@@ -13,12 +13,12 @@ import {
 const OurTeamSection = () => {
   return (
     <section className="bg-[#F4F6F7] md:py-20 py-12">
-      <div className="container mx-auto px-6">
+      <div className="container">
         <div className="grid lg:grid-cols-2 md:gap-14 gap-7 items-center">
           {/* LEFT SIDE */}
           <div className="flex flex-col gap-5">
             {/* Header Block */}
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 md:items-start items-center justify-center">
               <span className="bg-secondary/20 text-secondary px-6 py-2 rounded-full xl-para font-medium w-fit">
                 Our Team
               </span>

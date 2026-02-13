@@ -36,9 +36,9 @@ const videos = [
 const PatientEducation = () => {
   return (
     <section className="md:py-20 py-12 bg-[#F5F7F8]">
-      <div className="container mx-auto px-6">
+      <div className="container">
         {/* Header */}
-        <div className="w-full flex items-center justify-center flex-col md:gap-7 gap-3 text-center mb-16">
+        <div className="w-full flex items-center justify-center flex-col md:gap-7 gap-3 text-center md:mb-16 mb-6">
           <h3 className="bg-secondary/20 text-secondary md:px-8 px-6 py-2 rounded-full sm-para font-semibold">
             Patient Education
           </h3>
@@ -47,14 +47,14 @@ const PatientEducation = () => {
             Educational <span className="text-secondary">Videos</span>
           </h1>
 
-          <p className="sm-para md:w-[46%] w-full mx-auto">
+          <p className="xl-para md:w-[46%] w-full mx-auto">
             Watch our expert oncologists explain radiation therapy treatments,
             procedures, and what to expect during your cancer care journey.
           </p>
         </div>
 
         {/* Video Grid */}
-        <div className="grid lg:grid-cols-2 gap-10">
+        <div className="grid lg:grid-cols-2 md:gap-10 gap-5">
           {videos.map((video, index) => (
             <div
               key={index}
