@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Emergency = () => {
   return (
-    <section>
+    <section className="hidden md:block">
       <div className="relative w-full h-180 sm:h-125">
         <Image
           src="/images/ambalance.jpg"
