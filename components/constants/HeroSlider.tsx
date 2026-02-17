@@ -8,7 +8,6 @@ export interface Slide {
   primaryCta: string;
   secondaryCta: string;
   image: string;
-  mobileImage: string;
 }
 
 const SLIDES: Slide[] = [
@@ -20,8 +19,27 @@ const SLIDES: Slide[] = [
       "Precision radiology services powered by cutting-edge technology and expert radiologists",
     primaryCta: "Book Your Scan Today",
     secondaryCta: "Emergency Care",
-    image: "/banners/Banner - 3.png",
-    mobileImage: "/banners/mobile-3.jpg",
+    image: "/banners/banner1.webp",
+  },
+  {
+    id: 1,
+    eyebrow: "Advanced Diagnostic Imaging in",
+    headingPrimary: "Yamuna Nagar",
+    description:
+      "Precision radiology services powered by cutting-edge technology and expert radiologists",
+    primaryCta: "Book Your Scan Today",
+    secondaryCta: "Emergency Care",
+    image: "/banners/banner2.webp",
+  },
+  {
+    id: 1,
+    eyebrow: "Advanced Diagnostic Imaging in",
+    headingPrimary: "Yamuna Nagar",
+    description:
+      "Precision radiology services powered by cutting-edge technology and expert radiologists",
+    primaryCta: "Book Your Scan Today",
+    secondaryCta: "Emergency Care",
+    image: "/banners/banner3.webp",
   },
 ];
 

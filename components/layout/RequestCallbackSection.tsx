@@ -8,7 +8,7 @@ const RequestCallbackSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="order-2 lg:order-1 space-y-8">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold">
+              <div className="inline-flex items-center gap-2 bg-blue-100 text-secondary px-4 py-2 rounded-full text-sm font-semibold">
                 <svg
                   className="w-4 h-4"
                   fill="currentColor"
@@ -19,14 +19,14 @@ const RequestCallbackSection = () => {
                 Request a Callback
               </div>
 
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+              <h2 className="heading font-bold text-gray-900 leading-tight">
                 Get in Touch with Our{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-500">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-secondary to-teal-500">
                   Expert Team
                 </span>
               </h2>
 
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="xl-para text-gray-600 leading-relaxed">
                 Fill out the form and our patient coordinator will reach out to
                 you within 24 hours to confirm your appointment and answer any
                 questions.
@@ -35,9 +35,9 @@ const RequestCallbackSection = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
-                <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <div className="shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                   <svg
-                    className="w-6 h-6 text-blue-600"
+                    className="w-6 h-6 text-secondary"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -61,7 +61,7 @@ const RequestCallbackSection = () => {
               </div>
 
               <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
-                <div className="flex-shrink-0 w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center">
+                <div className="shrink-0 w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center">
                   <svg
                     className="w-6 h-6 text-teal-600"
                     fill="none"
@@ -87,7 +87,7 @@ const RequestCallbackSection = () => {
               </div>
 
               <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
-                <div className="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                <div className="shrink-0 w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                   <svg
                     className="w-6 h-6 text-purple-600"
                     fill="none"
@@ -113,7 +113,7 @@ const RequestCallbackSection = () => {
               </div>
 
               <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
-                <div className="flex-shrink-0 w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                <div className="shrink-0 w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
                   <svg
                     className="w-6 h-6 text-orange-600"
                     fill="none"
@@ -146,7 +146,7 @@ const RequestCallbackSection = () => {
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent"></div>
+              <div className="absolute inset-0 bg-linear-to-t from-blue-900/80 to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                 <p className="text-lg font-semibold">
                   Our dedicated team is here to assist you every step of the way
