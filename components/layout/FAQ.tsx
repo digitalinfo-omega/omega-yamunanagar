@@ -152,7 +152,7 @@ const FAQ = () => {
                   return (
                     <div
                       key={itemIndex}
-                      className="px-5 py-4 transition-all duration-300"
+                      className={`px-5 py-4 transition-all duration-300 ${isOpen ? "bg-secondary/30 rounded-xl border border-accent" : "bg-secondary/10 rounded-xl"}`}
                     >
                       <button
                         onClick={() => toggle(sectionIndex, itemIndex)}
@@ -172,7 +172,11 @@ const FAQ = () => {
                           isOpen ? "max-h-40 mt-3" : "max-h-0"
                         }`}
                       >
-                        <p className="sm-para text-gray-600 leading-relaxed">
+                        <p
+                          className={`sm-para leading-relaxed ${
+                            isOpen ? "text-black" : ""
+                          }`}
+                        >
                           {item.answer}
                         </p>
                       </div>

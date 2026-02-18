@@ -8,6 +8,7 @@ export interface Slide {
   primaryCta: string;
   secondaryCta: string;
   image: string;
+  card: string;
 }
 
 const SLIDES: Slide[] = [
@@ -19,7 +20,8 @@ const SLIDES: Slide[] = [
       "Precision radiology services powered by cutting-edge technology and expert radiologists",
     primaryCta: "Book Your Scan Today",
     secondaryCta: "Emergency Care",
-    image: "/banners/banner1.webp",
+    image: "/banners/banner-1.webp",
+    card: "/banners/card1.webp",
   },
   {
     id: 1,
@@ -29,7 +31,8 @@ const SLIDES: Slide[] = [
       "Precision radiology services powered by cutting-edge technology and expert radiologists",
     primaryCta: "Book Your Scan Today",
     secondaryCta: "Emergency Care",
-    image: "/banners/banner2.webp",
+    image: "/banners/banner-2.webp",
+    card: "/banners/card2.webp",
   },
   {
     id: 1,
@@ -39,7 +42,8 @@ const SLIDES: Slide[] = [
       "Precision radiology services powered by cutting-edge technology and expert radiologists",
     primaryCta: "Book Your Scan Today",
     secondaryCta: "Emergency Care",
-    image: "/banners/banner3.webp",
+    image: "/banners/banner-3.webp",
+    card: "/banners/card3.webp",
   },
 ];
 

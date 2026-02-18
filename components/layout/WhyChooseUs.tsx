@@ -110,8 +110,9 @@ export default function WhyChooseUs() {
           {features.map((feature, index) => (
             <div
               key={index}
-              /* Updated to use a linear gradient from top to bottom */
-              className="bg-linear-to-b from-[#FFFFFF] to-[#F5F7F2] border border-[#F0F2EE] rounded-3xl p-8 flex flex-col items-start h-full shadow-sm"
+              className={`bg-linear-to-b from-[#FFFFFF] to-[#F5F7F2] border border-[#F0F2EE] rounded-3xl p-8 flex flex-col items-start h-full shadow-sm
+        ${index === features.length - 1 ? "lg:col-span-2" : ""}
+      `}
             >
               <div className="w-12 h-12 rounded-full bg-[#004D40] flex items-center justify-center mb-6 text-white shrink-0">
                 {feature.icon}

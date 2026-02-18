@@ -8,7 +8,7 @@ const RequestCallbackSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="order-2 lg:order-1 space-y-8">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 bg-blue-100 text-secondary px-4 py-2 rounded-full text-sm font-semibold">
+              <div className="inline-flex items-center gap-2 bg-blue-100 text-secondary px-4 py-2 rounded-full text-sm font-semibold  md:mb-7 mb-2">
                 <svg
                   className="w-4 h-4"
                   fill="currentColor"
@@ -19,7 +19,7 @@ const RequestCallbackSection = () => {
                 Request a Callback
               </div>
 
-              <h2 className="heading font-bold text-gray-900 leading-tight">
+              <h2 className="heading font-bold text-gray-900 leading-tight md:mb-7 mb-0">
                 Get in Touch with Our{" "}
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-secondary to-teal-500">
                   Expert Team
@@ -139,7 +139,7 @@ const RequestCallbackSection = () => {
               </div>
             </div>
 
-            <div className="hidden lg:block relative h-90 rounded-2xl overflow-hidden shadow-xl">
+            <div className="hidden lg:block relative h-100 rounded-2xl overflow-hidden shadow-xl">
               <Image
                 src="/images/callback.webp"
                 alt="Medical Team"
@@ -156,7 +156,7 @@ const RequestCallbackSection = () => {
           </div>
 
           <div className="order-1 lg:order-2">
-            <div className="bg-white rounded-3xl border border-gray-100 p-8 lg:p-10">
+            <div className="bg-white rounded-3xl border border-gray-100 p-8 lg:p-5">
               <RequestForm />
             </div>
           </div>
