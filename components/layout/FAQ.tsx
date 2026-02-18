@@ -118,8 +118,8 @@ const FAQ = () => {
     <section className="md:py-20 py-10">
       <div className="container">
         {/* Header */}
-        <div className="w-full flex items-center justify-center flex-col md:gap-7 gap-2 md:mb-14 mb-5">
-          <h3 className="bg-secondary/20 text-secondary md:px-8 px-10 py-3 rounded-full sm-para font-semibold">
+        <div className="w-full flex items-center justify-center flex-col md:gap-7 gap-5 md:mb-14 mb-5">
+          <h3 className="bg-secondary/20 text-secondary md:px-8 px-5 py-2 rounded-full sm-para font-semibold">
             FAQ
           </h3>
           <h1 className="heading">

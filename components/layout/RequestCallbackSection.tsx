@@ -3,30 +3,32 @@ import RequestForm from "@/components/helpers/RequestForm";
 
 const RequestCallbackSection = () => {
   return (
-    <section className="w-full py-10 md:py-20 bg-linear-to-br from-blue-50 via-white to-blue-50 relative overflow-hidden">
+    <section className="w-full pt-10 md:py-20 bg-linear-to-br from-blue-50 via-white to-blue-50 relative overflow-hidden">
       <div className="relative container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 items-center">
           <div className="order-2 lg:order-1 space-y-8">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 bg-blue-100 text-secondary px-4 py-2 rounded-full text-sm font-semibold  md:mb-7 mb-2">
-                <svg
-                  className="w-4 h-4"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                </svg>
-                Request a Callback
+              <div className="flex md:justify-start justify-center mb-7">
+                <div className="inline-flex items-center gap-2 bg-blue-100 text-secondary px-4 py-2 rounded-full text-sm font-semibold">
+                  <svg
+                    className="w-4 h-4"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                  </svg>
+                  Request a Callback
+                </div>
               </div>
 
-              <h2 className="heading font-bold text-gray-900 leading-tight md:mb-7 mb-0">
+              <h2 className="heading font-bold text-gray-900 leading-tight mb-7 md:text-start text-center md:w-full w-[70%] mx-auto">
                 Get in Touch with Our{" "}
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-secondary to-teal-500">
                   Expert Team
                 </span>
               </h2>
 
-              <p className="xl-para text-gray-600 leading-relaxed">
+              <p className="xl-para text-gray-600 leading-relaxed md:text-start text-center">
                 Fill out the form and our patient coordinator will reach out to
                 you within 24 hours to confirm your appointment and answer any
                 questions.

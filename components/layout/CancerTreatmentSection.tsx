@@ -157,7 +157,7 @@ export default function CancerTreatmentSection() {
   };
 
   return (
-    <section className="md:py-20 py-10 relative overflow-hidden mt-3">
+    <section className="md:py-20 py-10 relative overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center -z-10"
         style={{

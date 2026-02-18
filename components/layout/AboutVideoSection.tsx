@@ -79,29 +79,34 @@ const CancerTreatmentSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="w-full overflow-hidden py-12 lg:py-20">
+    <section
+      ref={sectionRef}
+      className="w-full overflow-hidden py-12 lg:py-20 mb-3"
+    >
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           {/* LEFT COLUMN */}
           <div className="w-full lg:w-1/2">
             <div className="space-y-8">
-              <div className="inline-flex items-center space-x-2 bg-blue-50 text-secondary px-4 py-1.5 rounded-full text-sm font-semibold uppercase">
-                <Activity className="w-4 h-4" />
-                <span>World-Class Oncology</span>
+              <div className="flex md:justify-start justify-center">
+                <div className="inline-flex items-center space-x-2 bg-blue-50 text-secondary px-4 py-1.5 rounded-full text-sm font-semibold uppercase md:text-start text-center">
+                  <Activity className="w-4 h-4" />
+                  <span>World-Class Oncology</span>
+                </div>
               </div>
 
-              <h2 className="heading font-bold text-slate-900">
+              <h2 className="heading font-bold text-slate-900 md:text-start text-center">
                 Advanced Cancer Care <br />
                 <span className="text-accent">in Yamunanagar</span>
               </h2>
 
-              <p className="xl-para text-slate-600">
+              <p className="xl-para text-slate-600 md:text-start text-center">
                 Experience the pinnacle of medical excellence at{" "}
                 <strong>Capital Omega Hospital</strong>. State-of-the-art
                 Radiation Oncology with compassionate care.
               </p>
 
-              <div className="grid sm:grid-cols-2 gap-6">
+              <div className="grid sm:grid-cols-2 gap-6 md:justify-start justify-center">
                 <div className="flex gap-3">
                   <div className="p-2 bg-blue-100 rounded-lg text-secondary">
                     <ShieldCheck className="w-5 h-5" />
@@ -127,21 +132,23 @@ const CancerTreatmentSection = () => {
                 </div>
               </div>
 
-              <button className="group flex items-center gap-4 bg-secondary text-white px-6 py-3 rounded-full">
-                <span>Book an Appointment</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition" />
-              </button>
+              <div className="flex items-center md:justify-start justify-center">
+                <button className="group flex items-center gap-4 bg-secondary text-white px-6 py-3 rounded-full">
+                  <span>Book an Appointment</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition" />
+                </button>
+              </div>
             </div>
           </div>
 
           {/* RIGHT COLUMN: Phone Mockup Video */}
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-end relative">
             {/* Phone Chassis */}
-            <div className="relative mx-auto border-gray-900 bg-gray-900 border-[14px] rounded-[2.5rem] h-[600px] w-[300px] shadow-2xl flex flex-col items-center justify-center select-none">
+            <div className="relative mx-auto border-gray-900 bg-gray-900 border-14 rounded-[2.5rem] h-150 w-75 shadow-2xl flex flex-col items-center justify-center select-none">
               {/* Notch / Speaker Camera Area */}
-              <div className="h-[32px] w-[3px] bg-gray-800 absolute -left-[17px] top-[72px] rounded-l-lg"></div>
-              <div className="h-[46px] w-[3px] bg-gray-800 absolute -left-[17px] top-[124px] rounded-l-lg"></div>
-              <div className="h-[64px] w-[3px] bg-gray-800 absolute -right-[17px] top-[142px] rounded-r-lg"></div>
+              <div className="h-8 w-0.75 bg-gray-800 absolute -left-4.25 top-18 rounded-l-lg"></div>
+              <div className="h-11.5 w-0.75 bg-gray-800 absolute -left-4.25 top-31 rounded-l-lg"></div>
+              <div className="h-16 w-0.75 bg-gray-800 absolute -right-4.25 top-35.5 rounded-r-lg"></div>
 
               {/* Screen Area */}
               <div className="rounded-[2rem] overflow-hidden w-full h-full bg-white relative">

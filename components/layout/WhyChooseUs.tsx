@@ -98,7 +98,7 @@ export default function WhyChooseUs() {
             <span className="text-accent">Cancer Care</span>
           </h2>
 
-          <p className="text-[#4A4A4A] text-center max-w-4xl mb-16 para leading-relaxed">
+          <p className="text-[#4A4A4A] text-center max-w-4xl md:mb-16 mb-7 para leading-relaxed">
             Our radiation oncology team comprises highly qualified oncologists
             with specialized training in cancer treatment. Each treatment plan
             is developed by experienced physicians, ensuring therapeutic

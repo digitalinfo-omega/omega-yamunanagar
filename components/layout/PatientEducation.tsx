@@ -35,7 +35,7 @@ const videos = [
 
 const PatientEducation = () => {
   return (
-    <section className="md:py-20 py-12 bg-[#F5F7F8]">
+    <section className="md:py-20 pt-12 pb-4 bg-[#F5F7F8]">
       <div className="container">
         {/* Header */}
         <div className="w-full flex items-center justify-center flex-col md:gap-7 gap-3 text-center md:mb-16 mb-6">
@@ -63,7 +63,7 @@ const PatientEducation = () => {
               {/* Video */}
               <div className="rounded-xl overflow-hidden mb-6">
                 <iframe
-                  className="w-full h-[220px] md:h-[260px] rounded-xl"
+                  className="w-full h-55 md:h-65 rounded-xl"
                   src={video.url}
                   title={video.title}
                   allowFullScreen

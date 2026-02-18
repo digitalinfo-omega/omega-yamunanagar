@@ -7,19 +7,27 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Image from "next/image";
+import { AnimatedCounter } from "../helpers/AnimatedCounter";
 
 interface StatCardProps {
   title: string;
   subtitle: string[];
+  animate?: boolean;
 }
 
-const StatCard: React.FC<StatCardProps> = ({ title, subtitle }) => {
+const StatCard: React.FC<StatCardProps> = ({
+  title,
+  subtitle,
+  animate = false,
+}) => {
   return (
     <div
       className="bg-white border border-gray-100 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-sm aspect-4/3"
       style={{ boxShadow: "0px 0px 2px 0px #00000040" }}
     >
-      <h3 className="text-3xl font-medium text-gray-800 mb-2">{title}</h3>
+      <h3 className="text-3xl font-medium text-gray-800 mb-2">
+        {animate ? <AnimatedCounter value={title} /> : title}
+      </h3>
       {subtitle.map((line, index) => (
         <p
           key={index}
@@ -39,14 +47,14 @@ const OncologySection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-16 gap-7">
           {/* --- Left Column: Content & Stats --- */}
           <div>
-            <h1 className="heading font-medium text-gray-900 leading-tight mb-8">
+            <h1 className="heading font-medium text-gray-900 leading-tight mb-8 md:text-start text-center">
               <span className="text-accent">Expert</span> Radiation Oncology
               Care
               <br />
               in <span className="text-accent">Yamuna Nagar</span>
             </h1>
 
-            <div className="text-black space-y-6 mb-12 leading-relaxed">
+            <div className="text-black space-y-6 mb-12 leading-relaxed md:text-start text-center">
               <p>
                 Omega Hospitals Yamuna Nagar brings world-class radiation
                 oncology services to the heart of Haryana. As part of the
@@ -69,10 +77,12 @@ const OncologySection = () => {
               <StatCard
                 title="500+"
                 subtitle={["Cancer Patients", "Treated Annually"]}
+                animate
               />
               <StatCard
                 title="24/7"
                 subtitle={["Oncology", "Support Services"]}
+                animate
               />
               <StatCard
                 title="NABH"

@@ -77,7 +77,7 @@ export default function HeroSlider() {
 
             <div className="absolute inset-0 bg-black/30" />
 
-            <div className="relative z-10 h-full grid grid-cols-1 lg:grid-cols-2">
+            <div className="relative z-10 h-full grid grid-cols-1 lg:grid-cols-2 md:py-0 py-10 md:gap-0 gap-6">
               <div className="container px-6 max-w-xl text-white flex items-center">
                 <div>
                   <p className="xl-para mb-2">
@@ -90,7 +90,7 @@ export default function HeroSlider() {
                   <p className="mb-6 xl-para">{slide.description}</p>
 
                   <div className="flex gap-4">
-                    <button className="bg-accent px-6 py-3 rounded-md text-sm font-medium">
+                    <button className="bg-accent px-6 md:py-3 py-1 rounded-md text-sm font-medium">
                       {slide.primaryCta}
                     </button>
                     <button className="border border-white px-6 py-3 rounded-md text-sm font-medium">

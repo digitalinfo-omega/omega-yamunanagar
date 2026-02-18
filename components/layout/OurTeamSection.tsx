@@ -12,7 +12,7 @@ import {
 
 const OurTeamSection = () => {
   return (
-    <section className="bg-[#F4F6F7] md:py-20 py-12">
+    <section className="bg-[#F4F6F7] md:py-20 pt-12">
       <div className="container">
         <div className="grid lg:grid-cols-2 md:gap-14 gap-7 items-stretch">
           <div className="flex flex-col gap-5 h-full">
@@ -21,12 +21,12 @@ const OurTeamSection = () => {
                 Our Team
               </span>
 
-              <h2 className="heading font-semibold leading-tight">
+              <h2 className="heading font-semibold leading-tight md:text-start text-center">
                 Dedicated Cancer Care <br />
                 <span className="text-accent">Specialists</span>
               </h2>
 
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed md:text-start text-center">
                 Our radiation oncology department is led by board-certified
                 radiation oncologists with extensive experience in cancer
                 treatment. Our multidisciplinary team includes medical
@@ -113,9 +113,11 @@ const OurTeamSection = () => {
               <Heart size={22} />
             </div>
 
-            <h3 className="heading font-semibold mb-4">Our Commitment</h3>
+            <h3 className="heading font-semibold mb-4 md:text-start text-center">
+              Our Commitment
+            </h3>
 
-            <p className="text-gray-600 mb-8 xl-para">
+            <p className="text-gray-600 mb-8 xl-para md:text-start text-center">
               We are committed to providing the highest standard of cancer care
               with compassion and expertise.
             </p>
