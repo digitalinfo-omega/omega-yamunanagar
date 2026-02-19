@@ -1,12 +1,13 @@
 "use client";
 
 import {
-  Check,
-  ClipboardList,
-  HandHeart,
-  ShieldCheck,
   User,
+  ClipboardList,
+  ShieldCheck,
   UsersRound,
+  HandHeart,
+  ArrowRight,
+  Check,
 } from "lucide-react";
 
 interface FeatureItem {
@@ -84,62 +85,111 @@ const features: FeatureItem[] = [
   },
 ];
 
+const stats = [
+  { number: "15+", label: "Years of oncology excellence" },
+  { number: "98%", label: "Patient satisfaction rate" },
+  { number: "10k+", label: "Patients treated successfully" },
+];
+
 export default function WhyChooseUs() {
   return (
-    <section className="md:py-20 py-10">
+    <section className="py-10 md:py-20">
       <div className="container">
-        <div className="w-full px-4 bg-white flex flex-col items-center">
-          <h1 className="bg-secondary/20 text-secondary px-8 py-3 rounded-full sm-para font-semibold mb-8">
-            Why Choose Us
-          </h1>
+        {/* GRID LIKE IMAGE */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* LEFT GRID TILE (TITLE INSIDE GRID) */}
+          <div className="bg-transparent flex flex-col justify-center">
+            <div className="w-full px-4 bg-white flex flex-col items-center">
+              <h1 className="bg-secondary/20 text-secondary px-8 py-3 rounded-full sm-para font-semibold mb-8">
+                Why Choose Us
+              </h1>
 
-          <h2 className="heading font-bold text-[#1A1A1A] mb-6 text-center">
-            Your Trusted Partner in{" "}
-            <span className="text-accent">Cancer Care</span>
-          </h2>
+              <h2 className="xl-para font-bold text-[#1A1A1A] mb-6 text-center">
+                Your Trusted Partner in{" "}
+                <span className="text-accent">Cancer Care</span>
+              </h2>
+              <p className="text-[#4A4A4A] text-center max-w-4xl md:mb-16 mb-7 sm-para leading-relaxed">
+                Our radiation oncology team comprises highly qualified
+                oncologists with specialized training in cancer treatment. Each
+                treatment plan is developed by experienced physicians, ensuring
+                therapeutic accuracy and safety.
+              </p>
+            </div>
+          </div>
 
-          <p className="text-[#4A4A4A] text-center max-w-4xl md:mb-16 mb-7 para leading-relaxed">
-            Our radiation oncology team comprises highly qualified oncologists
-            with specialized training in cancer treatment. Each treatment plan
-            is developed by experienced physicians, ensuring therapeutic
-            accuracy and safety.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+          {/* RIGHT SERVICE CARDS */}
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`bg-linear-to-b from-[#FFFFFF] to-[#F5F7F2] border border-[#F0F2EE] rounded-3xl p-8 flex flex-col items-start h-full shadow-sm
-        ${index === features.length - 1 ? "lg:col-span-2" : ""}
-      `}
+              className="bg-white rounded-2xl border border-stone-200 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col relative"
             >
-              <div className="w-12 h-12 rounded-full bg-[#004D40] flex items-center justify-center mb-6 text-white shrink-0">
-                {feature.icon}
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-9 h-9 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center">
+                  {feature.icon}
+                </div>
+                <h3 className="text-lg font-medium text-stone-900">
+                  {feature.title}
+                </h3>
               </div>
 
-              <h3 className="text-xl font-bold text-[#1A1A1A] mb-4 xl-paraw">
-                {feature.title}
-              </h3>
-
-              <p className="xs-para text-[#5A5A5A] mb-8 leading-relaxed">
+              <p className="sm-para text-stone-500 leading-relaxed mb-4">
                 {feature.description}
               </p>
 
-              <ul className="space-y-3 w-full mt-auto">
-                {feature.points.map((point, pointIndex) => (
-                  <li key={pointIndex} className="flex items-start gap-3">
-                    <div className="w-5 h-5 flex items-center justify-center shrink-0 mt-0.5 text-[#00897B]">
-                      <Check size={16} strokeWidth={3} />
-                    </div>
-                    <span className="xs-para text-[#5A5A5A] font-medium">
-                      {point}
-                    </span>
-                  </li>
+              {/* POINTS (SUBTLE – IMAGE SAFE) */}
+              <div className="flex flex-col gap-1.5 mb-6">
+                {feature.points.map((point, pi) => (
+                  <div key={pi} className="flex items-start gap-2">
+                    <Check size={13} className="text-secondary mt-0.5" />
+                    <span className="sm-para text-stone-600">{point}</span>
+                  </div>
                 ))}
-              </ul>
+              </div>
+
+              {/* ARROW */}
+              <div className="absolute bottom-0 right-0">
+                <div className="w-15 h-11 rounded-br-2xl rounded-tl-2xl bg-secondary/10 flex items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-all duration-300">
+                  <ArrowRight size={20} />
+                </div>
+              </div>
             </div>
           ))}
+        </div>
+
+        {/* STATS — WITH WORLD DOT BACKGROUND */}
+        <div className="relative mt-16 rounded-2xl overflow-hidden border border-stone-200">
+          {/* DOTTED MAP BACKGROUND */}
+          <div
+            className="
+      absolute inset-0
+      bg-[radial-gradient(circle,_theme(colors.secondary)_1px,_transparent_1px)]
+      [background-size:22px_22px]
+      opacity-[0.08]
+      pointer-events-none
+    "
+          />
+
+          {/* STATS GRID */}
+          <div className="relative grid grid-cols-1 sm:grid-cols-3">
+            {stats.map((stat, i) => (
+              <div
+                key={i}
+                className={`bg-white/95 px-8 py-8 md:py-10 flex flex-col gap-1.5 
+          hover:bg-secondary transition-colors duration-300 group ${
+            i < stats.length - 1
+              ? "border-b sm:border-b-0 sm:border-r border-stone-200"
+              : ""
+          }`}
+              >
+                <span className="heading font-light text-secondary group-hover:text-white transition-colors">
+                  {stat.number}
+                </span>
+                <span className="sm-para md:text-sm text-stone-500 group-hover:text-white font-light tracking-wide transition-colors">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

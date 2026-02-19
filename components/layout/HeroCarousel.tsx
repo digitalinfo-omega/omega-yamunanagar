@@ -1,66 +1,119 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
 import { SLIDES } from "../constants/HeroSlider";
 
 const TOTAL = SLIDES.length;
 const EXTENDED_SLIDES = [...SLIDES, ...SLIDES, ...SLIDES];
-const AUTO_DELAY = 5000;
+const TRANSITION_MS = 700;
+const HALF = TRANSITION_MS / 2;
+const DOT_SIZE = 15;
+const DOT_GAP = 10;
+const TRACK_WIDTH = TOTAL * DOT_SIZE + (TOTAL - 1) * DOT_GAP;
+
+const dotLeft = (i: number) => i * (DOT_SIZE + DOT_GAP);
+
+type Phase = 0 | 1 | 2;
+type Dir = "next" | "prev";
 
 export default function HeroSlider() {
   const [index, setIndex] = useState(TOTAL);
-  const [isAnimating, setIsAnimating] = useState(true);
-  const [isHovered, setIsHovered] = useState(false);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-
-  const next = () => {
-    setIsAnimating(true);
-    setIndex((p) => p + 1);
-  };
-
-  const prev = () => {
-    setIsAnimating(true);
-    setIndex((p) => p - 1);
-  };
-
-  useEffect(() => {
-    if (isHovered) return;
-
-    intervalRef.current = setInterval(next, AUTO_DELAY);
-
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-        intervalRef.current = null;
-      }
-    };
-  }, [isHovered]);
-
-  useEffect(() => {
-    if (index === TOTAL * 2) {
-      setTimeout(() => {
-        setIsAnimating(false);
-        setIndex(TOTAL);
-      }, 700);
-    }
-    if (index === TOTAL - 1) {
-      setTimeout(() => {
-        setIsAnimating(false);
-        setIndex(TOTAL * 2 - 1);
-      }, 700);
-    }
-  }, [index]);
+  const [direction, setDirection] = useState<Dir>("next");
+  const [isJumping, setIsJumping] = useState(false);
+  const [animating, setAnimating] = useState(false);
+  const [pillFrom, setPillFrom] = useState(0);
+  const [pillTo, setPillTo] = useState(0);
+  const [phase, setPhase] = useState<Phase>(0);
+  const animRef = useRef<NodeJS.Timeout | null>(null);
 
   const active = ((index % TOTAL) + TOTAL) % TOTAL;
+
+  const triggerPill = useCallback((from: number, to: number) => {
+    if (animRef.current) clearTimeout(animRef.current);
+    setPillFrom(from);
+    setPillTo(to);
+    setPhase(1);
+    setAnimating(true);
+    animRef.current = setTimeout(() => {
+      setPhase(2);
+      animRef.current = setTimeout(() => {
+        setPhase(0);
+        setAnimating(false);
+      }, HALF);
+    }, HALF);
+  }, []);
+
+  const navigate = useCallback(
+    (dir: Dir) => {
+      setDirection(dir);
+      setIndex((p) => {
+        const next = dir === "next" ? p + 1 : p - 1;
+        const from = ((p % TOTAL) + TOTAL) % TOTAL;
+        const to = ((next % TOTAL) + TOTAL) % TOTAL;
+        triggerPill(from, to);
+        return next;
+      });
+    },
+    [triggerPill],
+  );
+
+  const next = useCallback(() => navigate("next"), [navigate]);
+  const prev = useCallback(() => navigate("prev"), [navigate]);
+
+  const goTo = useCallback(
+    (dotIndex: number) => {
+      const current = ((index % TOTAL) + TOTAL) % TOTAL;
+      if (dotIndex === current || animating) return;
+      const dir: Dir = dotIndex > current ? "next" : "prev";
+      setDirection(dir);
+      triggerPill(current, dotIndex);
+      setIndex(TOTAL + dotIndex);
+    },
+    [index, animating, triggerPill],
+  );
+
+  useEffect(() => {
+    const boundary = index === TOTAL * 2 || index === TOTAL - 1;
+    if (!boundary) return;
+    const target = index === TOTAL * 2 ? TOTAL : TOTAL * 2 - 1;
+    const t = setTimeout(() => {
+      setIsJumping(true);
+      setIndex(target);
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => setIsJumping(false)),
+      );
+    }, TRANSITION_MS);
+    return () => clearTimeout(t);
+  }, [index]);
+
+  const getPillStyle = (): React.CSSProperties => {
+    const fl = dotLeft(pillFrom);
+    const tl = dotLeft(pillTo);
+
+    if (phase === 0) return { left: dotLeft(active), width: DOT_SIZE };
+
+    if (direction === "next") {
+      return phase === 1
+        ? { left: fl, width: tl + DOT_SIZE - fl }
+        : { left: tl, width: DOT_SIZE };
+    }
+
+    return phase === 1
+      ? { left: tl, width: fl + DOT_SIZE - tl }
+      : { left: tl, width: DOT_SIZE };
+  };
 
   return (
     <section className="relative w-full h-130 overflow-hidden">
       <div
-        className={`flex h-full ${
-          isAnimating ? "transition-transform duration-700 ease-in-out" : ""
-        }`}
-        style={{ transform: `translateX(-${index * 100}%)` }}
+        className="flex h-full"
+        style={{
+          transform: `translateX(-${index * 100}%)`,
+          transition: isJumping
+            ? "none"
+            : `transform ${TRANSITION_MS}ms cubic-bezier(0.25, 0.46, 0.45, 0.94)`,
+        }}
       >
         {EXTENDED_SLIDES.map((slide, i) => (
           <div
@@ -74,9 +127,7 @@ export default function HeroSlider() {
               className="object-cover opacity-60"
               priority
             />
-
             <div className="absolute inset-0 bg-black/30" />
-
             <div className="relative z-10 h-full grid grid-cols-1 lg:grid-cols-2 md:py-0 py-10 md:gap-0 gap-6">
               <div className="container px-6 max-w-xl text-white flex items-center">
                 <div>
@@ -86,9 +137,7 @@ export default function HeroSlider() {
                       {slide.headingPrimary}
                     </span>
                   </p>
-
                   <p className="mb-6 xl-para">{slide.description}</p>
-
                   <div className="flex gap-4">
                     <button className="bg-accent px-6 md:py-3 py-1 rounded-md text-sm font-medium">
                       {slide.primaryCta}
@@ -99,7 +148,6 @@ export default function HeroSlider() {
                   </div>
                 </div>
               </div>
-
               <div className="relative h-64 sm:h-80 lg:h-full block">
                 <Image
                   src={slide.card}
@@ -119,7 +167,6 @@ export default function HeroSlider() {
       >
         ‹
       </button>
-
       <button
         onClick={next}
         className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-accent rounded-full text-white"
@@ -127,23 +174,45 @@ export default function HeroSlider() {
         ›
       </button>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-4 z-20">
-        {SLIDES.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => {
-              setIsAnimating(true);
-              setIndex(TOTAL + i);
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
+        <div
+          className="relative"
+          style={{ width: TRACK_WIDTH, height: DOT_SIZE }}
+        >
+          {SLIDES.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              style={{
+                position: "absolute",
+                left: dotLeft(i),
+                top: 0,
+                width: DOT_SIZE,
+                height: DOT_SIZE,
+                borderRadius: "9999px",
+                backgroundColor: "rgba(255,255,255,0.3)",
+                border: "none",
+                padding: 0,
+                cursor: "pointer",
+                transition: "background-color 300ms ease",
+              }}
+            />
+          ))}
+
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              height: DOT_SIZE,
+              borderRadius: "9999px",
+              backgroundColor: "#e56e1b",
+              pointerEvents: "none",
+              transition: `left ${HALF}ms cubic-bezier(0.4, 0, 0.2, 1), width ${HALF}ms cubic-bezier(0.4, 0, 0.2, 1)`,
+              ...getPillStyle(),
             }}
-            className={`text-sm font-medium ${
-              active === i
-                ? "text-white bg-accent p-2 rounded-full"
-                : "text-white/50 bg-accent/50 p-2 rounded-full"
-            }`}
-          >
-            {String(i + 1).padStart(2, "0")}
-          </button>
-        ))}
+          />
+        </div>
       </div>
     </section>
   );

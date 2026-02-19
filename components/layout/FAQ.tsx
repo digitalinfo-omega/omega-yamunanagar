@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Minus, Plus } from "lucide-react";
 
 interface FAQItem {
   question: string;
@@ -115,36 +115,47 @@ const FAQ = () => {
   };
 
   return (
-    <section className="md:py-20 py-10">
-      <div className="container">
-        {/* Header */}
-        <div className="w-full flex items-center justify-center flex-col md:gap-7 gap-5 md:mb-14 mb-5">
-          <h3 className="bg-secondary/20 text-secondary md:px-8 px-5 py-2 rounded-full sm-para font-semibold">
-            FAQ
-          </h3>
-          <h1 className="heading">
-            Frequently Asked <span className="text-secondary">Questions</span>
-          </h1>
-          <p className="sm-para md:w-[46%] w-full mx-auto text-center">
+    <section className="md:py-20 py-10 bg-stone-50 relative overflow-hidden">
+      {/* BG glows — same as WhyChooseUs */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-secondary/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl pointer-events-none" />
+
+      <div className="container relative z-10">
+        {/* ── Header ── */}
+        <div className="w-full flex items-center justify-center flex-col md:gap-5 gap-4 md:mb-16 mb-10">
+          <div className="flex items-center gap-3">
+            <span className="block w-7 h-px bg-secondary" />
+            <span className="text-xs font-semibold tracking-widest uppercase text-secondary">
+              FAQ
+            </span>
+            <span className="block w-7 h-px bg-secondary" />
+          </div>
+          <h2 className="heading font-light text-stone-900 tracking-tight text-center">
+            Frequently Asked{" "}
+            <span className="text-secondary font-light">Questions</span>
+          </h2>
+          <p className="sm-para md:w-[46%] w-full mx-auto text-center text-stone-500 font-light leading-relaxed">
             Find answers to common questions about radiation therapy, treatment
             planning, insurance, and support services.
           </p>
         </div>
 
-        {/* Accordion Grid */}
-        <div className="grid md:grid-cols-2 grid-cols-1 md:gap-10 gap-3">
+        {/* ── FAQ Grid ── */}
+        <div className="grid md:grid-cols-2 grid-cols-1 md:gap-8 gap-6">
           {faqData.map((section, sectionIndex) => (
-            <div key={sectionIndex} className="md:p-8 p-4 space-y-6">
+            <div key={sectionIndex} className="flex flex-col gap-4">
               {/* Section Title */}
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-secondary text-white font-bold">
+              <div className="flex items-center gap-3 mb-1">
+                <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-secondary text-white font-bold text-sm shrink-0">
                   ?
                 </div>
-                <h3 className="font-semibold text-lg">{section.title}</h3>
+                <h3 className="font-semibold text-stone-800 tracking-tight">
+                  {section.title}
+                </h3>
               </div>
 
               {/* Accordion Items */}
-              <div className="space-y-4">
+              <div className="flex flex-col gap-3">
                 {section.items.map((item, itemIndex) => {
                   const key = `${sectionIndex}-${itemIndex}`;
                   const isOpen = openIndex === key;
@@ -152,31 +163,43 @@ const FAQ = () => {
                   return (
                     <div
                       key={itemIndex}
-                      className={`px-5 py-4 transition-all duration-300 ${isOpen ? "bg-secondary/30 rounded-xl border border-accent" : "bg-secondary/10 rounded-xl"}`}
+                      className={`rounded-xl border transition-all duration-300 overflow-hidden ${
+                        isOpen
+                          ? "bg-secondary/10 border-secondary/30"
+                          : "bg-white border-stone-200 hover:border-secondary/30 hover:bg-secondary/5"
+                      }`}
                     >
                       <button
                         onClick={() => toggle(sectionIndex, itemIndex)}
-                        className="hover:cursor-pointer w-full flex justify-between items-center text-left font-medium"
+                        className="w-full flex justify-between items-center text-left gap-4 px-5 py-4 cursor-pointer"
                       >
-                        <span className="sm-para">{item.question}</span>
-                        <ChevronDown
-                          size={18}
-                          className={`transition-transform duration-300 ${
-                            isOpen ? "rotate-180" : ""
-                          }`}
-                        />
-                      </button>
-
-                      <div
-                        className={`overflow-hidden transition-all duration-300 ${
-                          isOpen ? "max-h-40 mt-3" : "max-h-0"
-                        }`}
-                      >
-                        <p
-                          className={`sm-para leading-relaxed ${
-                            isOpen ? "text-black" : ""
+                        <span
+                          className={`sm-para font-medium leading-snug transition-colors duration-200 ${
+                            isOpen ? "text-secondary" : "text-stone-700"
                           }`}
                         >
+                          {item.question}
+                        </span>
+
+                        {/* Plus / Minus toggle — same style as WhyChooseUs */}
+                        <div
+                          className={`w-7 h-7 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 ${
+                            isOpen
+                              ? "bg-secondary border-secondary text-white"
+                              : "border-stone-300 text-stone-400"
+                          }`}
+                        >
+                          {isOpen ? <Minus size={13} /> : <Plus size={13} />}
+                        </div>
+                      </button>
+
+                      {/* Answer */}
+                      <div
+                        className={`overflow-hidden transition-all duration-400 ease-in-out ${
+                          isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                        }`}
+                      >
+                        <p className="sm-para text-stone-500 font-light leading-relaxed px-5 pb-5">
                           {item.answer}
                         </p>
                       </div>

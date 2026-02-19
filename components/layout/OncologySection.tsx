@@ -5,6 +5,11 @@ import {
   Download,
   BadgeIndianRupee,
   ArrowRight,
+  Users,
+  Hospital,
+  Radiation,
+  Atom,
+  HandHelping,
 } from "lucide-react";
 import Image from "next/image";
 import { AnimatedCounter } from "../helpers/AnimatedCounter";
@@ -15,9 +20,19 @@ interface StatCardProps {
   animate?: boolean;
 }
 
+import { LucideIcon } from "lucide-react";
+
+interface StatCardProps {
+  title: string;
+  subtitle: string[];
+  icon?: LucideIcon;
+  animate?: boolean;
+}
+
 const StatCard: React.FC<StatCardProps> = ({
   title,
   subtitle,
+  icon: Icon,
   animate = false,
 }) => {
   return (
@@ -25,13 +40,23 @@ const StatCard: React.FC<StatCardProps> = ({
       className="bg-white border border-gray-100 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-sm aspect-4/3"
       style={{ boxShadow: "0px 0px 2px 0px #00000040" }}
     >
+      {/* Icon Box */}
+      {Icon && (
+        <div className="mb-3 flex items-center justify-center rounded-lg bg-gray-100 p-3">
+          <Icon className="h-6 w-6 text-gray-700" />
+        </div>
+      )}
+
+      {/* Title */}
       <h3 className="text-3xl font-medium text-gray-800 mb-2">
         {animate ? <AnimatedCounter value={title} /> : title}
       </h3>
+
+      {/* Subtitle */}
       {subtitle.map((line, index) => (
         <p
           key={index}
-          className="text-gray-600 text-sm font-medium loading-tight"
+          className="text-gray-600 text-sm font-medium leading-tight"
         >
           {line}
         </p>
@@ -75,20 +100,24 @@ const OncologySection = () => {
             {/* 2x2 Stats Grid */}
             <div className="grid grid-cols-2 gap-4">
               <StatCard
+                icon={Hospital}
                 title="500+"
                 subtitle={["Cancer Patients", "Treated Annually"]}
                 animate
               />
               <StatCard
+                icon={HandHelping}
                 title="24/7"
                 subtitle={["Oncology", "Support Services"]}
                 animate
               />
               <StatCard
+                icon={Radiation}
                 title="NABH"
                 subtitle={["Accredited", "Cancer Center"]}
               />
               <StatCard
+                icon={Atom}
                 title="ACR"
                 subtitle={["Radiation", "Oncology Standards"]}
               />
