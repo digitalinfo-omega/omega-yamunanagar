@@ -125,16 +125,30 @@ const FAQ = () => {
         <div className="w-full flex items-center justify-center flex-col md:gap-5 gap-4 md:mb-16 mb-10">
           <div className="flex items-center gap-3">
             <span className="block w-7 h-px bg-secondary" />
-            <span className="text-xs font-semibold tracking-widest uppercase text-secondary">
+            <span
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              className="text-xs font-semibold tracking-widest uppercase text-secondary"
+            >
               FAQ
             </span>
             <span className="block w-7 h-px bg-secondary" />
           </div>
-          <h2 className="heading font-light text-stone-900 tracking-tight text-center">
+          <h2
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+            className="heading font-light text-stone-900 tracking-tight text-center"
+          >
             Frequently Asked{" "}
             <span className="text-secondary font-light">Questions</span>
           </h2>
-          <p className="sm-para md:w-[46%] w-full mx-auto text-center text-stone-500 font-light leading-relaxed">
+          <p
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="400"
+            className="sm-para md:w-[46%] w-full mx-auto text-center text-stone-500 font-light leading-relaxed"
+          >
             Find answers to common questions about radiation therapy, treatment
             planning, insurance, and support services.
           </p>
@@ -143,7 +157,13 @@ const FAQ = () => {
         {/* ── FAQ Grid ── */}
         <div className="grid md:grid-cols-2 grid-cols-1 md:gap-8 gap-6">
           {faqData.map((section, sectionIndex) => (
-            <div key={sectionIndex} className="flex flex-col gap-4">
+            <div
+              key={sectionIndex}
+              className="flex flex-col gap-4"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay={sectionIndex * 200}
+            >
               {/* Section Title */}
               <div className="flex items-center gap-3 mb-1">
                 <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-secondary text-white font-bold text-sm shrink-0">

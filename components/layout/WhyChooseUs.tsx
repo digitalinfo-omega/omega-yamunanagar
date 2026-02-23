@@ -98,7 +98,11 @@ export default function WhyChooseUs() {
         {/* GRID LIKE IMAGE */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* LEFT GRID TILE (TITLE INSIDE GRID) */}
-          <div className="bg-transparent flex flex-col justify-center">
+          <div
+            className="bg-transparent flex flex-col justify-center"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <div className="w-full px-4 bg-white flex flex-col items-center">
               <h1 className="bg-secondary/20 text-secondary px-8 py-3 rounded-full sm-para font-semibold mb-8">
                 Why Choose Us
@@ -122,6 +126,9 @@ export default function WhyChooseUs() {
             <div
               key={index}
               className="bg-white rounded-2xl border border-stone-200 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col relative"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay={index * 100}
             >
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-9 h-9 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center">
@@ -173,6 +180,9 @@ export default function WhyChooseUs() {
           <div className="relative grid grid-cols-1 sm:grid-cols-3">
             {stats.map((stat, i) => (
               <div
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay={i * 100}
                 key={i}
                 className={`bg-white/95 px-8 py-8 md:py-10 flex flex-col gap-1.5 
           hover:bg-secondary transition-colors duration-300 group ${

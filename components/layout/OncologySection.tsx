@@ -71,7 +71,7 @@ const OncologySection = () => {
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-16 gap-7">
           {/* --- Left Column: Content & Stats --- */}
-          <div>
+          <div data-aos="fade-up" data-aos-duration="1000">
             <h1 className="heading font-medium text-gray-900 leading-tight mb-8 md:text-start text-center">
               <span className="text-accent">Expert</span> Radiation Oncology
               Care
@@ -124,7 +124,11 @@ const OncologySection = () => {
             </div>
           </div>
 
-          <div className="relative w-full h-134 lg:h-full">
+          <div
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            className="relative w-full h-134 lg:h-full"
+          >
             <Image
               src="/images/oncology.webp"
               alt="Radiation Oncology Care"

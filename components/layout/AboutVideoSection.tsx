@@ -18,16 +18,10 @@ const CancerTreatmentSection = () => {
   const [isMuted, setIsMuted] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
 
-  /* -----------------------------------------
-     Detect mobile (once on mount)
-  ------------------------------------------ */
   useEffect(() => {
     setIsMobile(window.innerWidth < 1024);
   }, []);
 
-  /* -----------------------------------------
-     Desktop autoplay when 30% in view
-  ------------------------------------------ */
   useEffect(() => {
     if (isMobile) return;
 
@@ -61,9 +55,6 @@ const CancerTreatmentSection = () => {
     return () => observer.disconnect();
   }, [isMobile]);
 
-  /* -----------------------------------------
-     Manual toggle (mobile + fallback)
-  ------------------------------------------ */
   const handleToggle = () => {
     if (!videoRef.current) return;
 
@@ -86,7 +77,11 @@ const CancerTreatmentSection = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           {/* LEFT COLUMN */}
-          <div className="w-full lg:w-1/2">
+          <div
+            className="w-full lg:w-1/2"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <div className="space-y-8">
               <div className="flex md:justify-start justify-center">
                 <div className="inline-flex items-center space-x-2 bg-blue-50 text-secondary px-4 py-1.5 rounded-full text-sm font-semibold uppercase md:text-start text-center">
@@ -142,7 +137,12 @@ const CancerTreatmentSection = () => {
           </div>
 
           {/* RIGHT COLUMN: Phone Mockup Video */}
-          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end relative">
+          <div
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+            className="w-full lg:w-1/2 flex justify-center lg:justify-end relative"
+          >
             {/* Phone Chassis */}
             <div className="relative mx-auto border-gray-900 bg-gray-900 border-14 rounded-[2.5rem] h-150 w-75 shadow-2xl flex flex-col items-center justify-center select-none">
               {/* Notch / Speaker Camera Area */}

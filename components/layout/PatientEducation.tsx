@@ -39,15 +39,29 @@ const PatientEducation = () => {
       <div className="container">
         {/* Header */}
         <div className="w-full flex items-center justify-center flex-col md:gap-7 gap-3 text-center md:mb-16 mb-6">
-          <h3 className="bg-secondary/20 text-secondary md:px-8 px-6 py-2 rounded-full sm-para font-semibold">
+          <h3
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            className="bg-secondary/20 text-secondary md:px-8 px-6 py-2 rounded-full sm-para font-semibold"
+          >
             Patient Education
           </h3>
 
-          <h1 className="heading">
+          <h1
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+            className="heading"
+          >
             Educational <span className="text-secondary">Videos</span>
           </h1>
 
-          <p className="xl-para md:w-[46%] w-full mx-auto">
+          <p
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="400"
+            className="xl-para md:w-[46%] w-full mx-auto"
+          >
             Watch our expert oncologists explain radiation therapy treatments,
             procedures, and what to expect during your cancer care journey.
           </p>
@@ -59,6 +73,9 @@ const PatientEducation = () => {
             <div
               key={index}
               className="bg-white rounded-2xl p-6 border border-gray-200"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay={index * 200}
             >
               {/* Video */}
               <div className="rounded-xl overflow-hidden mb-6">

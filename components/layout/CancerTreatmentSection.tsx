@@ -167,11 +167,20 @@ export default function CancerTreatmentSection() {
 
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="heading font-semibold text-gray-900">
+          <h2
+            className="heading font-semibold text-gray-900"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             Comprehensive <span className="text-accent">Cancer Treatment</span>{" "}
             Solutions
           </h2>
-          <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+          <p
+            className="text-gray-600 mt-4 max-w-2xl mx-auto"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+          >
             Omega Hospitals offers advanced therapeutic radiation treatments
             using the latest technology and following international cancer
             treatment protocols.
