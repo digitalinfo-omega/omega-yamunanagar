@@ -212,9 +212,9 @@ export default function CancerTreatmentSection() {
             className="bg-white rounded-2xl shadow-md border p-6 md:p-10 flex flex-col gap-10 w-full"
           >
             <div className="flex items-center gap-3">
-              <div className="bg-secondary/10 p-2 rounded-lg">
+              {/* <div className="bg-secondary/10 p-2 rounded-lg">
                 <X className="text-secondary" size={20} />
-              </div>
+              </div> */}
               <h3 className="xl-para font-semibold text-secondary">
                 {displayData.title}
               </h3>

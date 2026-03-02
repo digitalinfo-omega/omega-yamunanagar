@@ -42,13 +42,13 @@ const StatCard: React.FC<StatCardProps> = ({
     >
       {/* Icon Box */}
       {Icon && (
-        <div className="mb-3 flex items-center justify-center rounded-lg bg-gray-100 p-3">
-          <Icon className="h-6 w-6 text-gray-700" />
+        <div className="mb-3 flex items-center justify-center rounded-lg bg-accent/10 p-3">
+          <Icon className="h-6 w-6 text-accent" />
         </div>
       )}
 
       {/* Title */}
-      <h3 className="text-3xl font-medium text-gray-800 mb-2">
+      <h3 className="text-3xl font-medium text-accent mb-2">
         {animate ? <AnimatedCounter value={title} /> : title}
       </h3>
 

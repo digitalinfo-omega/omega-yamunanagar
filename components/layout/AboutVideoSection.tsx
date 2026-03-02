@@ -72,63 +72,70 @@ const CancerTreatmentSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="w-full overflow-hidden py-12 lg:py-20 mb-3"
+      className="w-full overflow-hidden py-16 lg:py-24 bg-[radial-gradient(circle_at_center,_white_0%,_#f6fbfe_35%,_#e3f2f8_100%)]"
     >
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           {/* LEFT COLUMN */}
-          <div
-            className="w-full lg:w-1/2"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-          >
+          <div className="w-full lg:w-[60%]">
             <div className="space-y-8">
+              {/* Badge */}
               <div className="flex md:justify-start justify-center">
-                <div className="inline-flex items-center space-x-2 bg-blue-50 text-secondary px-4 py-1.5 rounded-full text-sm font-semibold uppercase md:text-start text-center">
+                <div className="inline-flex items-center space-x-2 bg-[#dff3f7] text-[#1aa3b0] px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wide">
                   <Activity className="w-4 h-4" />
                   <span>World-Class Oncology</span>
                 </div>
               </div>
 
-              <h2 className="heading font-bold text-slate-900 md:text-start text-center">
-                Advanced Cancer Care <br />
-                <span className="text-accent">in Yamunanagar</span>
+              {/* Heading */}
+              <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 leading-snug md:text-left text-center">
+                Advanced Cancer Care in{" "}
+                <span className="text-[#e56e1b]">Yamuna Nagar</span>
               </h2>
 
-              <p className="xl-para text-slate-600 md:text-start text-center">
-                Experience the pinnacle of medical excellence at{" "}
-                <strong>Capital Omega Hospital</strong>. State-of-the-art
-                Radiation Oncology with compassionate care.
+              {/* Paragraph */}
+              <p className="text-slate-600 text-base md:text-lg leading-relaxed md:text-left text-center">
+                Experience the pinnacle of medical excellence at Capital Omega
+                Hospital. We bring state-of-the-art Radiation Oncology and
+                compassionate patient care closer to home. Our dedicated center
+                in Jagadhri is equipped with advanced technology to ensure
+                precise diagnosis and effective treatment plans.
               </p>
 
+              {/* Features */}
               <div className="grid sm:grid-cols-2 gap-6 md:justify-start justify-center">
-                <div className="flex gap-3">
-                  <div className="p-2 bg-blue-100 rounded-lg text-secondary">
+                <div className="flex gap-3 items-start">
+                  <div className="p-2 bg-secondary/10 rounded-md text-secondary">
                     <ShieldCheck className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-semibold">Advanced Radiation</h4>
+                    <h4 className="font-semibold text-slate-800">
+                      Advanced Radiation
+                    </h4>
                     <p className="text-sm text-slate-500">
-                      IMRT & IGRT precision therapy
+                      Latest IMRT & IGRT technology for precision therapy
                     </p>
                   </div>
                 </div>
 
-                <div className="flex gap-3">
-                  <div className="p-2 bg-pink-100 rounded-lg text-pink-600">
+                <div className="flex gap-3 items-start">
+                  <div className="p-2 bg-secondary/10 rounded-md text-secondary">
                     <HeartPulse className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-semibold">Compassionate Care</h4>
+                    <h4 className="font-semibold text-slate-800">
+                      Compassionate Care
+                    </h4>
                     <p className="text-sm text-slate-500">
-                      Support from diagnosis to recovery
+                      Holistic support from diagnosis to recovery
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-center md:justify-start justify-center">
-                <button className="group flex items-center gap-4 bg-secondary text-white px-6 py-3 rounded-full">
+              {/* Button */}
+              <div className="flex md:justify-start justify-center">
+                <button className="group flex items-center gap-3 bg-[#1aa3b0] hover:bg-[#168d97] transition text-white px-6 py-3 rounded-lg shadow-md">
                   <span>Book an Appointment</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition" />
                 </button>
@@ -141,7 +148,7 @@ const CancerTreatmentSection = () => {
             data-aos="fade-up"
             data-aos-duration="1000"
             data-aos-delay="200"
-            className="w-full lg:w-1/2 flex justify-center lg:justify-end relative"
+            className="w-full lg:w-[40%] flex justify-center lg:justify-end relative"
           >
             {/* Phone Chassis */}
             <div className="relative mx-auto border-gray-900 bg-gray-900 border-14 rounded-[2.5rem] h-150 w-75 shadow-2xl flex flex-col items-center justify-center select-none">

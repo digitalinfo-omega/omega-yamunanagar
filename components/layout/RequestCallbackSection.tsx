@@ -9,7 +9,7 @@ const RequestCallbackSection = () => {
           <div className="order-2 lg:order-1 space-y-8">
             <div className="space-y-4">
               <div className="flex md:justify-start justify-center mb-7">
-                <div className="inline-flex items-center gap-2 bg-blue-100 text-secondary px-4 py-2 rounded-full text-sm font-semibold">
+                <div className="inline-flex items-center gap-2 bg-secondary/10 text-secondary px-4 py-2 rounded-full text-sm font-semibold">
                   <svg
                     className="w-4 h-4"
                     fill="currentColor"
@@ -37,7 +37,7 @@ const RequestCallbackSection = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
-                <div className="shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <div className="shrink-0 w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
                   <svg
                     className="w-6 h-6 text-secondary"
                     fill="none"
@@ -63,9 +63,9 @@ const RequestCallbackSection = () => {
               </div>
 
               <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
-                <div className="shrink-0 w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center">
+                <div className="shrink-0 w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
                   <svg
-                    className="w-6 h-6 text-teal-600"
+                    className="w-6 h-6 text-secondary"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -89,9 +89,9 @@ const RequestCallbackSection = () => {
               </div>
 
               <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
-                <div className="shrink-0 w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                <div className="shrink-0 w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
                   <svg
-                    className="w-6 h-6 text-purple-600"
+                    className="w-6 h-6 text-secondary"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -115,9 +115,9 @@ const RequestCallbackSection = () => {
               </div>
 
               <div className="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
-                <div className="shrink-0 w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                <div className="shrink-0 w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
                   <svg
-                    className="w-6 h-6 text-orange-600"
+                    className="w-6 h-6 text-secondary"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"

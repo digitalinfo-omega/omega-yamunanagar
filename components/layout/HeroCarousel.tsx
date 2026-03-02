@@ -124,37 +124,39 @@ export default function HeroSlider() {
               src={slide.image}
               alt={slide.headingPrimary}
               fill
-              className="object-cover opacity-60"
+              className="object-cover"
               priority
             />
             <div className="absolute inset-0 bg-black/30" />
-            <div className="relative z-10 h-full grid grid-cols-1 lg:grid-cols-2 md:py-0 py-10 md:gap-0 gap-6">
-              <div className="container px-6 max-w-xl text-white flex items-center">
-                <div>
-                  <p className="xl-para mb-2">
-                    {slide.eyebrow}{" "}
-                    <span className="font-semibold text-accent heading">
-                      {slide.headingPrimary}
-                    </span>
-                  </p>
-                  <p className="mb-6 xl-para">{slide.description}</p>
-                  <div className="flex gap-4">
-                    <button className="bg-accent px-6 md:py-3 py-1 rounded-md text-sm font-medium">
-                      {slide.primaryCta}
-                    </button>
-                    <button className="border border-white px-6 py-3 rounded-md text-sm font-medium">
-                      {slide.secondaryCta}
-                    </button>
-                  </div>
+            <div className="relative z-10 h-full flex items-center">
+              <div className="container text-white relative z-10">
+                {/* Top Small Heading */}
+                <p className="text-xl md:text-2xl font-light mb-4 tracking-wide">
+                  {slide.eyebrow}
+                </p>
+
+                {/* Main Heading */}
+                <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
+                  <span className="text-[#e56e1b]">{slide.headingPrimary}</span>
+                </h1>
+
+                {/* Description */}
+                <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl">
+                  {slide.description}
+                </p>
+
+                {/* Buttons */}
+                <div className="flex gap-4 flex-wrap">
+                  <button className="bg-[#e56e1b] hover:bg-[#cf5f13] transition px-6 py-3 rounded-md font-medium text-white flex items-center gap-2 shadow-lg">
+                    {slide.primaryCta}
+                    <span className="text-lg">››</span>
+                  </button>
+
+                  <button className="border border-secondary/50 text-secondary hover:bg-secondary/10 transition px-6 py-3 rounded-md font-medium flex items-center gap-2 backdrop-blur-sm">
+                    {slide.secondaryCta}
+                    <span className="text-lg">››</span>
+                  </button>
                 </div>
-              </div>
-              <div className="relative h-64 sm:h-80 lg:h-full block">
-                <Image
-                  src={slide.card}
-                  alt="card"
-                  fill
-                  className="object-cover object-right"
-                />
               </div>
             </div>
           </div>

@@ -8,7 +8,6 @@ export interface Slide {
   primaryCta: string;
   secondaryCta: string;
   image: string;
-  card: string;
 }
 
 const SLIDES: Slide[] = [
@@ -20,30 +19,27 @@ const SLIDES: Slide[] = [
       "Precision radiology services powered by cutting-edge technology and expert radiologists",
     primaryCta: "Book Your Scan Today",
     secondaryCta: "Emergency Care",
-    image: "/banners/banner-1.webp",
-    card: "/banners/card1.webp",
+    image: "/images/hero/1.webp",
   },
   {
-    id: 1,
-    eyebrow: "Advanced Diagnostic Imaging in",
-    headingPrimary: "Yamuna Nagar",
+    id: 2,
+    eyebrow: "Compassionate Cancer Care",
+    headingPrimary: "Precise Treatment.",
     description:
-      "Precision radiology services powered by cutting-edge technology and expert radiologists",
+      "State-of-the-art radiation therapy delivering hope and healing to cancer patients",
     primaryCta: "Book Your Scan Today",
     secondaryCta: "Emergency Care",
-    image: "/banners/banner-2.webp",
-    card: "/banners/card2.webp",
+    image: "/images/hero/1.webp",
   },
   {
-    id: 1,
-    eyebrow: "Advanced Diagnostic Imaging in",
+    id: 3,
+    eyebrow: "Fighting Cancer with Advanced Technology",
     headingPrimary: "Yamuna Nagar",
     description:
-      "Precision radiology services powered by cutting-edge technology and expert radiologists",
+      "Comprehensive radiation oncology services serving Yamuna Nagar and surrounding regions",
     primaryCta: "Book Your Scan Today",
     secondaryCta: "Emergency Care",
-    image: "/banners/banner-3.webp",
-    card: "/banners/card3.webp",
+    image: "/images/hero/1.webp",
   },
 ];
 
