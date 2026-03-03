@@ -29,7 +29,7 @@ const SLIDES: Slide[] = [
       "State-of-the-art radiation therapy delivering hope and healing to cancer patients",
     primaryCta: "Book Your Scan Today",
     secondaryCta: "Emergency Care",
-    image: "/images/hero/1.webp",
+    image: "/images/hero/2.webp",
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ const SLIDES: Slide[] = [
       "Comprehensive radiation oncology services serving Yamuna Nagar and surrounding regions",
     primaryCta: "Book Your Scan Today",
     secondaryCta: "Emergency Care",
-    image: "/images/hero/1.webp",
+    image: "/images/hero/3.webp",
   },
 ];
 

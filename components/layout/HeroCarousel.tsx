@@ -127,7 +127,9 @@ export default function HeroSlider() {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-black/30" />
+            {((i % TOTAL) + TOTAL) % TOTAL !== 0 && (
+              <div className="absolute inset-0 bg-linear-to-r from-black/60 via-black/40 to-transparent" />
+            )}
             <div className="relative z-10 h-full flex items-center">
               <div className="container text-white relative z-10">
                 {/* Top Small Heading */}
@@ -152,7 +154,7 @@ export default function HeroSlider() {
                     <span className="text-lg">››</span>
                   </button>
 
-                  <button className="border border-secondary/50 text-secondary hover:bg-secondary/10 transition px-6 py-3 rounded-md font-medium flex items-center gap-2 backdrop-blur-sm">
+                  <button className="border border-white/50 text-white hover:bg-white/10 transition px-6 py-3 rounded-md font-medium flex items-center gap-2 backdrop-blur-sm">
                     {slide.secondaryCta}
                     <span className="text-lg">››</span>
                   </button>

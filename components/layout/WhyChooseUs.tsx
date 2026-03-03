@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   User,
   ClipboardList,
@@ -9,6 +10,7 @@ import {
   ArrowRight,
   Check,
 } from "lucide-react";
+import { AnimatedCounter } from "../helpers/AnimatedCounter";
 
 interface FeatureItem {
   title: string;
@@ -29,7 +31,7 @@ const features: FeatureItem[] = [
       "Evidence-based treatment protocols",
       "National conference participation",
     ],
-    icon: <User />,
+    icon: <User size={18} />,
   },
   {
     title: "Personalized Treatment Plans",
@@ -42,7 +44,7 @@ const features: FeatureItem[] = [
       "Side effect management strategies",
       "Quality of life considerations",
     ],
-    icon: <ClipboardList />,
+    icon: <ClipboardList size={18} />,
   },
   {
     title: "Advanced Side Effect Management",
@@ -55,7 +57,7 @@ const features: FeatureItem[] = [
       "Psycho-oncology services",
       "Skin care guidance",
     ],
-    icon: <ShieldCheck />,
+    icon: <ShieldCheck size={18} />,
   },
   {
     title: "Patient & Family Support",
@@ -68,7 +70,7 @@ const features: FeatureItem[] = [
       "Financial counseling",
       "Accommodation support",
     ],
-    icon: <UsersRound />,
+    icon: <UsersRound size={18} />,
   },
   {
     title: "Safety & Quality Excellence",
@@ -81,7 +83,7 @@ const features: FeatureItem[] = [
       "Treatment plan verification",
       "Outcome tracking",
     ],
-    icon: <HandHeart />,
+    icon: <HandHeart size={18} />,
   },
 ];
 
@@ -93,79 +95,65 @@ const stats = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-10 md:py-20">
+    <section className="py-12 md:py-20 bg-[#F8FAFB]">
       <div className="container">
-        {/* GRID LIKE IMAGE */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* LEFT GRID TILE (TITLE INSIDE GRID) */}
-          <div
-            className="bg-transparent flex flex-col justify-center"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-          >
-            <div className="w-full px-4 bg-white flex flex-col items-center">
-              <h1 className="bg-secondary/20 text-secondary px-8 py-3 rounded-full sm-para font-semibold mb-8">
-                Why Choose Us
-              </h1>
+        <div className="text-center mb-14">
+          <span className="inline-block bg-secondary/10 text-secondary px-6 py-2 rounded-full text-sm font-medium mb-5">
+            Why Choose Us
+          </span>
+          <h2 className="text-3xl md:text-4xl font-semibold text-stone-900 mb-5">
+            Your Trusted Partner in{" "}
+            <span className="text-accent">Cancer Care</span>
+          </h2>
+          <p className="max-w-3xl mx-auto text-stone-600 leading-relaxed">
+            Our radiation oncology team comprises highly qualified oncologists
+            with specialized training in cancer treatment. Each treatment plan
+            is developed by experienced physicians, ensuring therapeutic
+            accuracy and safety.
+          </p>
+        </div>
 
-              <h2 className="xl-para font-bold text-[#1A1A1A] mb-6 text-center">
-                Your Trusted Partner in{" "}
-                <span className="text-accent">Cancer Care</span>
-              </h2>
-              <p className="text-[#4A4A4A] text-center max-w-4xl md:mb-16 mb-7 sm-para leading-relaxed">
-                Our radiation oncology team comprises highly qualified
-                oncologists with specialized training in cancer treatment. Each
-                treatment plan is developed by experienced physicians, ensuring
-                therapeutic accuracy and safety.
-              </p>
-            </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="relative rounded-2xl overflow-hidden border border-stone-200 shadow-sm min-h-[380px]">
+            <Image
+              src="/images/why-choose.webp"
+              alt="Cancer care support"
+              fill
+              className="object-cover"
+            />
           </div>
 
-          {/* RIGHT SERVICE CARDS */}
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl border border-stone-200 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col relative"
-              data-aos="fade-up"
-              data-aos-duration="1000"
-              data-aos-delay={index * 100}
+              className="bg-white rounded-2xl border border-stone-200 p-6 shadow-sm hover:shadow-md transition duration-300 flex flex-col"
             >
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-9 h-9 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center">
                   {feature.icon}
                 </div>
-                <h3 className="text-lg font-medium text-stone-900">
+                <h3 className="text-lg font-semibold text-stone-900">
                   {feature.title}
                 </h3>
               </div>
 
-              <p className="sm-para text-stone-500 leading-relaxed mb-4">
+              <p className="text-sm text-stone-500 mb-4 leading-relaxed">
                 {feature.description}
               </p>
 
-              {/* POINTS (SUBTLE – IMAGE SAFE) */}
-              <div className="flex flex-col gap-1.5 mb-6">
-                {feature.points.map((point, pi) => (
-                  <div key={pi} className="flex items-start gap-2">
-                    <Check size={13} className="text-secondary mt-0.5" />
-                    <span className="sm-para text-stone-600">{point}</span>
+              <div className="space-y-2 mb-6">
+                {feature.points.map((point, i) => (
+                  <div key={i} className="flex items-start gap-2">
+                    <Check size={14} className="text-secondary mt-1" />
+                    <span className="text-sm text-stone-600">{point}</span>
                   </div>
                 ))}
-              </div>
-
-              {/* ARROW */}
-              <div className="absolute bottom-0 right-0">
-                <div className="w-15 h-11 rounded-br-2xl rounded-tl-2xl bg-secondary/10 flex items-center justify-center text-secondary hover:bg-secondary hover:text-white transition-all duration-300">
-                  <ArrowRight size={20} />
-                </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* STATS — WITH WORLD DOT BACKGROUND */}
         <div className="relative mt-16 rounded-2xl overflow-hidden border border-stone-200">
-          {/* DOTTED MAP BACKGROUND */}
           <div
             className="
       absolute inset-0
@@ -176,13 +164,9 @@ export default function WhyChooseUs() {
     "
           />
 
-          {/* STATS GRID */}
           <div className="relative grid grid-cols-1 sm:grid-cols-3">
             {stats.map((stat, i) => (
               <div
-                data-aos="fade-up"
-                data-aos-duration="1000"
-                data-aos-delay={i * 100}
                 key={i}
                 className={`bg-white/95 px-8 py-8 md:py-10 flex flex-col gap-1.5 
           hover:bg-secondary transition-colors duration-300 group ${
@@ -192,7 +176,7 @@ export default function WhyChooseUs() {
           }`}
               >
                 <span className="heading font-light text-secondary group-hover:text-white transition-colors">
-                  {stat.number}
+                  <AnimatedCounter value={stat.number} />
                 </span>
                 <span className="sm-para md:text-sm text-stone-500 group-hover:text-white font-light tracking-wide transition-colors">
                   {stat.label}
