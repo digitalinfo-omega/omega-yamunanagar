@@ -157,14 +157,13 @@ export default function CancerTreatmentSection() {
   };
 
   return (
-    <section className="md:py-20 py-10 relative overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center -z-10"
-        style={{
-          backgroundImage: "url('/images/cancer/background-img.webp')",
-        }}
-      />
-
+    <section
+      className="md:py-20 py-10 -mt-15 relative overflow-hidden bg-secondary/15"
+      style={{
+        clipPath:
+          "polygon(0 60px, 12% 60px, 22% 0, 78% 0, 88% 60px, 100% 60px, 100% 100%, 0 100%)",
+      }}
+    >
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2

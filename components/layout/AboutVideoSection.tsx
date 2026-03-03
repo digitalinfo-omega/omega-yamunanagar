@@ -19,7 +19,14 @@ const CancerTreatmentSection = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    setIsMobile(window.innerWidth < 1024);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -29,7 +36,7 @@ const CancerTreatmentSection = () => {
       ([entry]) => {
         if (!videoRef.current) return;
 
-        if (entry.isIntersecting && entry.intersectionRatio >= 0.3) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.2) {
           videoRef.current.muted = false;
           videoRef.current
             .play()
@@ -40,11 +47,13 @@ const CancerTreatmentSection = () => {
             .catch(() => {});
         } else {
           videoRef.current.pause();
+          videoRef.current.muted = true;
           setIsPlaying(false);
+          setIsMuted(true);
         }
       },
       {
-        threshold: [0.3],
+        threshold: [0, 0.2],
       },
     );
 
@@ -72,7 +81,13 @@ const CancerTreatmentSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="w-full overflow-hidden py-16 lg:py-24 bg-[radial-gradient(circle_at_center,_white_0%,_#f6fbfe_35%,_#e3f2f8_100%)]"
+      className="w-full overflow-hidden py-16 lg:py-24 relative"
+      style={{
+        background:
+          "radial-gradient(circle at center, white 0%, #f6fbfe 35%, #e3f2f8 100%)",
+        clipPath:
+          "polygon(0 0, 100% 0, 100% 100%, 88% 100%, 78% calc(100% - 60px), 22% calc(100% - 60px), 12% 100%, 0 100%)",
+      }}
     >
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">

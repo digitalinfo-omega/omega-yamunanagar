@@ -33,9 +33,9 @@ const satoshi = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Best Cancer Hospital in Jabalpur | Omega Hospitals Advanced Care",
+  title: "Best Cancer Hospital in Yamunanagar | Omega Hospitals Advanced Care",
   description:
-    "Leading cancer & multispecialty hospital in Jabalpur with AI-powered treatment, expert oncologists, 24/7 emergency care. Book appointment: 0261-226-5552",
+    "Leading cancer & multispecialty hospital in Yamunanagar with AI-powered treatment, expert oncologists, 24/7 emergency care. Book appointment: 0261-226-5552",
 };
 
 export default function RootLayout({

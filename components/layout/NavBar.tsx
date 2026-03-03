@@ -106,6 +106,9 @@ const NavBar = () => {
                 <option defaultValue="" disabled className="text-gray-500">
                   Please select a center
                 </option>
+                <option value="omega-hospitals-yamunagar">
+                  Omega Hospitals Yamunagar
+                </option>
                 <option value="omega-hospitals-jabalpur">
                   Omega Hospitals Jabalpur
                 </option>
@@ -120,9 +123,6 @@ const NavBar = () => {
                 </option>
                 <option value="omega-hospitals-vijayawada">
                   Omega Hospitals Vijayawada
-                </option>
-                <option value="omega-hospitals-yamunagar">
-                  Omega Hospitals Yamunagar
                 </option>
                 <option value="omega-hospitals-bhimavaram">
                   Omega Hospitals Bhimavaram
@@ -162,6 +162,9 @@ const NavBar = () => {
                 <option defaultValue="" disabled className="text-gray-500">
                   Please select a center
                 </option>
+                <option value="omega-hospitals-yamunagar">
+                  Omega Hospitals Yamunagar
+                </option>
                 <option value="omega-hospitals-jabalpur">
                   Omega Hospitals Jabalpur
                 </option>
@@ -176,9 +179,6 @@ const NavBar = () => {
                 </option>
                 <option value="omega-hospitals-vijayawada">
                   Omega Hospitals Vijayawada
-                </option>
-                <option value="omega-hospitals-yamunagar">
-                  Omega Hospitals Yamunagar
                 </option>
                 <option value="omega-hospitals-bhimavaram">
                   Omega Hospitals Bhimavaram

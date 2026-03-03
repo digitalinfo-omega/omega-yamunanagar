@@ -114,9 +114,9 @@ export default function WhyChooseUs() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="relative rounded-2xl overflow-hidden border border-stone-200 shadow-sm min-h-[380px]">
+          <div className="relative rounded-2xl overflow-hidden border min-h-95">
             <Image
-              src="/images/why-choose.webp"
+              src="/images/why-choose.jpg"
               alt="Cancer care support"
               fill
               className="object-cover"
@@ -127,8 +127,11 @@ export default function WhyChooseUs() {
             <div
               key={index}
               className="bg-white rounded-2xl border border-stone-200 p-6 shadow-sm hover:shadow-md transition duration-300 flex flex-col"
+              style={{
+                background: "linear-gradient(145deg, #ffffff 0%, #f3f4f6 100%)",
+              }}
             >
-              <div className="flex items-center gap-3 mb-3">
+              <div className="flex flex-col gap-3 mb-3">
                 <div className="w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center">
                   {feature.icon}
                 </div>
