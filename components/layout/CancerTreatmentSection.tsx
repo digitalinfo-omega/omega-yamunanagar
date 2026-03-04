@@ -3,6 +3,7 @@
 import Image from "next/image";
 import {
   Activity,
+  ArrowRight,
   CheckCircle,
   HeartPulse,
   Radiation,
@@ -295,8 +296,9 @@ export default function CancerTreatmentSection() {
             </div>
 
             <div>
-              <button className="bg-secondary hover:bg-secondary/90 text-white px-8 py-3 rounded-lg text-sm font-medium transition-colors">
-                Learn More →
+              <button className="group bg-secondary hover:bg-secondary/90 text-white px-6 py-3 rounded-lg xl-para font-medium">
+                Learn More{" "}
+                <ArrowRight className="text-2xl inline-block ml-2 group-hover:translate-x-1 transition-transform duration-100" />
               </button>
             </div>
           </div>

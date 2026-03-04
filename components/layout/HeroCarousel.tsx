@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
 import { SLIDES } from "../constants/HeroSlider";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const TOTAL = SLIDES.length;
 const EXTENDED_SLIDES = [...SLIDES, ...SLIDES, ...SLIDES];
@@ -127,36 +128,56 @@ export default function HeroSlider() {
               className="object-cover"
               priority
             />
-            {((i % TOTAL) + TOTAL) % TOTAL !== 0 && (
-              <div className="absolute inset-0 bg-linear-to-r from-black/60 via-black/40 to-transparent" />
+            {slide.dark && (
+              <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/40 to-transparent" />
             )}
             <div className="relative z-10 h-full flex items-center">
-              <div className="container text-white relative z-10">
-                {/* Top Small Heading */}
+              <div
+                className={`container relative z-10 ${
+                  slide.dark ? "text-white" : "text-black"
+                }`}
+              >
+                {/* eyebrow */}
                 <p className="text-xl md:text-2xl font-light mb-4 tracking-wide">
                   {slide.eyebrow}
                 </p>
 
-                {/* Main Heading */}
-                <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
+                {/* heading */}
+                <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
                   <span className="text-[#e56e1b]">{slide.headingPrimary}</span>
                 </h1>
 
-                {/* Description */}
-                <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl">
+                {/* description */}
+                <p
+                  className={`text-lg md:text-xl mb-8 max-w-2xl ${
+                    slide.dark ? "text-gray-200" : "text-black"
+                  }`}
+                >
                   {slide.description}
                 </p>
 
-                {/* Buttons */}
+                {/* buttons */}
                 <div className="flex gap-4 flex-wrap">
-                  <button className="bg-[#e56e1b] hover:bg-[#cf5f13] transition px-6 py-3 rounded-md font-medium text-white flex items-center gap-2 shadow-lg">
-                    {slide.primaryCta}
-                    <span className="text-lg">››</span>
+                  <button className="group bg-[#e56e1b] hover:bg-[#cf5f13] transition px-6 py-3 rounded-md font-medium text-white flex items-center gap-2 shadow-lg">
+                    <span>{slide.primaryCta}</span>
+
+                    <span className="flex items-center justify-center h-full leading-none text-lg group-hover:translate-x-1 transition-transform duration-200 mb-1">
+                      ››
+                    </span>
                   </button>
 
-                  <button className="border border-white/50 text-white hover:bg-white/10 transition px-6 py-3 rounded-md font-medium flex items-center gap-2 backdrop-blur-sm">
-                    {slide.secondaryCta}
-                    <span className="text-lg">››</span>
+                  <button
+                    className={`group px-6 py-3 rounded-md font-medium flex items-center gap-2 transition ${
+                      slide.dark
+                        ? "border border-white/50 text-white hover:bg-white/10"
+                        : "border border-black text-black hover:bg-[#2c9fb0]/10"
+                    }`}
+                  >
+                    <span>{slide.secondaryCta}</span>
+
+                    <span className="flex items-center justify-center h-full leading-none text-lg group-hover:translate-x-1 transition-transform duration-200 mb-1">
+                      ››
+                    </span>
                   </button>
                 </div>
               </div>
@@ -167,15 +188,16 @@ export default function HeroSlider() {
 
       <button
         onClick={prev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-accent rounded-full text-white"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 bg-accent rounded-full text-white"
       >
-        ‹
+        <ChevronLeft size={20} />
       </button>
+
       <button
         onClick={next}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 bg-accent rounded-full text-white"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-10 h-10 bg-accent rounded-full text-white"
       >
-        ›
+        <ChevronRight size={20} />
       </button>
 
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">

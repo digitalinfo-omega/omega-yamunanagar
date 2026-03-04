@@ -98,14 +98,28 @@ export default function WhyChooseUs() {
     <section className="py-12 md:py-20 bg-[#F8FAFB]">
       <div className="container">
         <div className="text-center mb-14">
-          <span className="inline-block bg-secondary/10 text-secondary px-6 py-2 rounded-full text-sm font-medium mb-5">
+          <span
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            className="inline-block bg-secondary/10 text-secondary px-6 py-2 rounded-full text-sm font-medium mb-5"
+          >
             Why Choose Us
           </span>
-          <h2 className="text-3xl md:text-4xl font-semibold text-stone-900 mb-5">
+          <h2
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+            className="text-3xl md:text-4xl font-semibold text-stone-900 mb-5"
+          >
             Your Trusted Partner in{" "}
             <span className="text-accent">Cancer Care</span>
           </h2>
-          <p className="max-w-3xl mx-auto text-stone-600 leading-relaxed">
+          <p
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+            className="max-w-3xl mx-auto text-stone-600 leading-relaxed"
+          >
             Our radiation oncology team comprises highly qualified oncologists
             with specialized training in cancer treatment. Each treatment plan
             is developed by experienced physicians, ensuring therapeutic
@@ -114,7 +128,12 @@ export default function WhyChooseUs() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="relative rounded-2xl overflow-hidden border min-h-95">
+          <div
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="300"
+            className="relative rounded-2xl overflow-hidden border min-h-95"
+          >
             <Image
               src="/images/why-choose.jpg"
               alt="Cancer care support"
@@ -130,6 +149,9 @@ export default function WhyChooseUs() {
               style={{
                 background: "linear-gradient(145deg, #ffffff 0%, #f3f4f6 100%)",
               }}
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay={index * 100}
             >
               <div className="flex flex-col gap-3 mb-3">
                 <div className="w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center">

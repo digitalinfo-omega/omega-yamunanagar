@@ -16,53 +16,6 @@ const CancerTreatmentSection = () => {
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 1024);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    if (isMobile) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!videoRef.current) return;
-
-        if (entry.isIntersecting && entry.intersectionRatio >= 0.2) {
-          videoRef.current.muted = false;
-          videoRef.current
-            .play()
-            .then(() => {
-              setIsPlaying(true);
-              setIsMuted(false);
-            })
-            .catch(() => {});
-        } else {
-          videoRef.current.pause();
-          videoRef.current.muted = true;
-          setIsPlaying(false);
-          setIsMuted(true);
-        }
-      },
-      {
-        threshold: [0, 0.2],
-      },
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [isMobile]);
 
   const handleToggle = () => {
     if (!videoRef.current) return;
@@ -184,7 +137,7 @@ const CancerTreatmentSection = () => {
                 />
 
                 {/* MOBILE: Play / Unmute */}
-                {isMobile && !isPlaying && (
+                {!isPlaying && (
                   <div className="absolute inset-0 flex items-center justify-center bg-black/20">
                     <button
                       onClick={handleToggle}
@@ -199,7 +152,7 @@ const CancerTreatmentSection = () => {
                 )}
 
                 {/* MOBILE: Pause */}
-                {isMobile && isPlaying && (
+                {isPlaying && (
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition">
                     <button
                       onClick={handleToggle}

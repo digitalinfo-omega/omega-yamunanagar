@@ -88,7 +88,7 @@ const OurTeamSection = () => {
                 ].map((item, index) => (
                   <div
                     key={index}
-                    className="bg-secondary/10 rounded-xl p-5 flex items-center gap-4 border border-gray-200"
+                    className="bg-secondary/10 rounded-xl px-5 py-2 flex items-center gap-4 border border-gray-200"
                     data-aos="fade-up"
                     data-aos-duration="1000"
                     data-aos-delay={index * 100}
@@ -103,9 +103,12 @@ const OurTeamSection = () => {
             </div>
 
             <div className="mt-auto">
-              <button className="bg-accent text-white px-6 py-3 rounded-lg flex items-center gap-2 hover:opacity-90 transition">
+              <button className="group bg-accent text-white px-6 py-3 rounded-lg flex items-center gap-2 hover:opacity-90 transition">
                 Meet Our Oncologists
-                <ArrowRight size={18} />
+                <ArrowRight
+                  size={18}
+                  className="group-hover:translate-x-1 transition-transform duration-100"
+                />
               </button>
             </div>
           </div>

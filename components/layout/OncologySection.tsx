@@ -21,12 +21,14 @@ interface StatCardProps {
 }
 
 import { LucideIcon } from "lucide-react";
+import ServicesSection from "../helpers/ServicesSection";
 
 interface StatCardProps {
   title: string;
   subtitle: string[];
   icon?: LucideIcon;
   animate?: boolean;
+  idx: number;
 }
 
 const StatCard: React.FC<StatCardProps> = ({
@@ -34,9 +36,13 @@ const StatCard: React.FC<StatCardProps> = ({
   subtitle,
   icon: Icon,
   animate = false,
+  idx,
 }) => {
   return (
     <div
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      data-aos-delay={idx * 100}
       className="bg-white border border-gray-100 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-sm aspect-4/3"
       style={{ boxShadow: "0px 0px 2px 0px #00000040" }}
     >
@@ -71,8 +77,12 @@ const OncologySection = () => {
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-16 gap-7">
           {/* --- Left Column: Content & Stats --- */}
-          <div data-aos="fade-up" data-aos-duration="1000">
-            <h1 className="heading font-medium text-gray-900 leading-tight mb-8 md:text-start text-center">
+          <div>
+            <h1
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              className="heading font-medium text-gray-900 leading-tight mb-8 md:text-start text-center"
+            >
               <span className="text-accent">Expert</span> Radiation Oncology
               Care
               <br />
@@ -80,14 +90,22 @@ const OncologySection = () => {
             </h1>
 
             <div className="text-black space-y-6 mb-12 leading-relaxed md:text-start text-center">
-              <p>
+              <p
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay="100"
+              >
                 Omega Hospitals Yamuna Nagar brings world-class radiation
                 oncology services to the heart of Haryana. As part of the
                 renowned Omega Hospitals network, a Morgan Stanley Enterprise,
                 we combine cutting-edge radiation therapy technology with
                 compassionate, patient-centered cancer care.
               </p>
-              <p>
+              <p
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay="200"
+              >
                 Our state-of-the-art radiation oncology department serves as a
                 cornerstone in comprehensive cancer treatment. Whether you're
                 beginning your cancer journey or continuing treatment, our team
@@ -104,22 +122,26 @@ const OncologySection = () => {
                 title="500+"
                 subtitle={["Cancer Patients", "Treated Annually"]}
                 animate
+                idx={0}
               />
               <StatCard
                 icon={HandHelping}
                 title="24/7"
                 subtitle={["Oncology", "Support Services"]}
                 animate
+                idx={1}
               />
               <StatCard
                 icon={Radiation}
                 title="NABH"
                 subtitle={["Accredited", "Cancer Center"]}
+                idx={2}
               />
               <StatCard
                 icon={Atom}
                 title="ACR"
                 subtitle={["Radiation", "Oncology Standards"]}
+                idx={3}
               />
             </div>
           </div>
@@ -127,15 +149,9 @@ const OncologySection = () => {
           <div
             data-aos="fade-up"
             data-aos-duration="1000"
-            className="relative w-full h-134 lg:h-full"
+            className="relative w-full"
           >
-            <Image
-              src="/images/oncology.webp"
-              alt="Radiation Oncology Care"
-              fill
-              className="object-contain"
-              priority
-            />
+            <ServicesSection />
           </div>
         </div>
       </div>
