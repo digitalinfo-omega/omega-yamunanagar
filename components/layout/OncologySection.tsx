@@ -1,17 +1,5 @@
 import React from "react";
-import {
-  Calendar,
-  FileText,
-  Download,
-  BadgeIndianRupee,
-  ArrowRight,
-  Users,
-  Hospital,
-  Radiation,
-  Atom,
-  HandHelping,
-} from "lucide-react";
-import Image from "next/image";
+import { Hospital, Radiation, Atom, HandHelping } from "lucide-react";
 import { AnimatedCounter } from "../helpers/AnimatedCounter";
 
 interface StatCardProps {
@@ -43,7 +31,7 @@ const StatCard: React.FC<StatCardProps> = ({
       data-aos="fade-up"
       data-aos-duration="1000"
       data-aos-delay={idx * 100}
-      className="bg-white border border-gray-100 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-sm aspect-4/3"
+      className="bg-white border border-gray-100 rounded-xl md:p-6 p-3 flex flex-col items-center justify-center text-center shadow-sm aspect-4/3"
       style={{ boxShadow: "0px 0px 2px 0px #00000040" }}
     >
       {/* Icon Box */}

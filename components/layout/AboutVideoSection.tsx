@@ -34,12 +34,10 @@ const CancerTreatmentSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="w-full overflow-hidden py-16 lg:py-24 relative"
+      className="w-full overflow-hidden py-16 lg:py-24 relative md:[clip-path:polygon(0_0,100%_0,100%_100%,88%_100%,78%_calc(100%-60px),22%_calc(100%-60px),12%_100%,0_100%)]"
       style={{
         background:
           "radial-gradient(circle at center, white 0%, #f6fbfe 35%, #e3f2f8 100%)",
-        clipPath:
-          "polygon(0 0, 100% 0, 100% 100%, 88% 100%, 78% calc(100% - 60px), 22% calc(100% - 60px), 12% 100%, 0 100%)",
       }}
     >
       <div className="container mx-auto px-4">

@@ -106,7 +106,7 @@ export default function HeroSlider() {
   };
 
   return (
-    <section className="relative w-full h-130 overflow-hidden">
+    <section className="relative w-full md:h-130 overflow-hidden">
       <div
         className="flex h-full"
         style={{
@@ -119,21 +119,21 @@ export default function HeroSlider() {
         {EXTENDED_SLIDES.map((slide, i) => (
           <div
             key={`${slide.id}-${i}`}
-            className="w-full h-full shrink-0 relative"
+            className="w-full h-full shrink-0 relative flex flex-col md:block"
           >
             <Image
               src={slide.image}
               alt={slide.headingPrimary}
               fill
-              className="object-cover"
+              className="object-cover hidden md:block"
               priority
             />
             {slide.dark && (
-              <div className="absolute inset-0 bg-linear-to-r from-black/70 via-black/40 to-transparent" />
+              <div className="md:block hidden absolute inset-0 bg-linear-to-r from-black/70 via-black/40 to-transparent" />
             )}
-            <div className="relative z-10 h-full flex items-center">
+            <div className="relative z-10 flex flex-col justify-center md:h-full md:flex-row md:items-center md:p-0 p-10">
               <div
-                className={`container relative z-10 ${
+                className={`container relative z-10 text-black flex flex-col md:items-start items-center md:${
                   slide.dark ? "text-white" : "text-black"
                 }`}
               >
@@ -143,13 +143,13 @@ export default function HeroSlider() {
                 </p>
 
                 {/* heading */}
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                <h1 className="text-4xl md:text-5xl text-start md:text-center font-bold leading-tight mb-6">
                   <span className="text-[#e56e1b]">{slide.headingPrimary}</span>
                 </h1>
 
                 {/* description */}
                 <p
-                  className={`text-lg md:text-xl mb-8 max-w-2xl ${
+                  className={`text-lg md:text-xl mb-8 max-w-2xl md:${
                     slide.dark ? "text-gray-200" : "text-black"
                   }`}
                 >
@@ -157,8 +157,8 @@ export default function HeroSlider() {
                 </p>
 
                 {/* buttons */}
-                <div className="flex gap-4 flex-wrap">
-                  <button className="group bg-[#e56e1b] hover:bg-[#cf5f13] transition px-6 py-3 rounded-md font-medium text-white flex items-center gap-2 shadow-lg">
+                <div className="flex flex-col md:flex-row gap-4 w-[80%] md:w-auto">
+                  <button className="group w-full md:w-auto bg-[#e56e1b] hover:bg-[#cf5f13] transition px-6 py-3 rounded-md font-medium text-white flex items-center justify-center gap-2 shadow-lg">
                     <span>{slide.primaryCta}</span>
 
                     <span className="flex items-center justify-center h-full leading-none text-lg group-hover:translate-x-1 transition-transform duration-200 mb-1">
@@ -167,11 +167,10 @@ export default function HeroSlider() {
                   </button>
 
                   <button
-                    className={`group px-6 py-3 rounded-md font-medium flex items-center gap-2 transition ${
-                      slide.dark
-                        ? "border border-white/50 text-white hover:bg-white/10"
-                        : "border border-black text-black hover:bg-[#2c9fb0]/10"
-                    }`}
+                    className={`group w-full md:w-auto px-6 py-3 rounded-md font-medium flex items-center justify-center gap-2 transition
+    border border-black text-black hover:bg-[#2c9fb0]/10
+    ${slide.dark ? "md:border-white/50 md:text-white hover:bg-white/10" : "border-black text-black hover:bg-[#2c9fb0]/10"}
+  `}
                   >
                     <span>{slide.secondaryCta}</span>
 
@@ -181,6 +180,14 @@ export default function HeroSlider() {
                   </button>
                 </div>
               </div>
+            </div>
+            <div className="relative w-full h-64 md:hidden">
+              <Image
+                src={slide.image}
+                alt={slide.headingPrimary}
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
         ))}

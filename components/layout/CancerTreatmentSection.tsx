@@ -27,7 +27,7 @@ interface TreatmentData {
 const treatments: TreatmentData[] = [
   {
     title: "External Beam Radiation Therapy (EBRT)",
-    image: "/images/cancer-treatment/ebrt.webp",
+    image: "/images/cancer-treatment/External-Beam.jpg",
     description:
       "External beam radiation therapy uses a medical linear accelerator (LINAC) to deliver high-energy radiation beams from outside the body to destroy cancer cells while protecting healthy tissue.",
     techniques: [
@@ -55,7 +55,7 @@ const treatments: TreatmentData[] = [
   },
   {
     title: "Stereotactic Body Radiation Therapy (SBRT)",
-    image: "/images/cancer-treatment/sbrt.jpg",
+    image: "/images/cancer-treatment/Stereotactic.jpg",
     description:
       "SBRT delivers highly focused radiation doses to tumors in fewer treatment sessions with sub-millimeter precision.",
     techniques: [
@@ -78,7 +78,7 @@ const treatments: TreatmentData[] = [
   },
   {
     title: "Brachytherapy (Internal Radiation Therapy)",
-    image: "/images/cancer-treatment/brachytherapy.jpg",
+    image: "/images/cancer-treatment/Brachytherapy.jpg",
     description:
       "Brachytherapy involves placing radioactive sources directly inside or near the tumor for targeted treatment.",
     techniques: [
@@ -96,7 +96,7 @@ const treatments: TreatmentData[] = [
   },
   {
     title: "Palliative Radiation Therapy",
-    image: "/images/cancer-treatment/ebrt.webp",
+    image: "/images/cancer-treatment/Palliative.jpg",
     description:
       "Palliative radiation therapy is used to relieve symptoms such as pain, bleeding, or obstruction caused by advanced cancer.",
     techniques: ["Symptom-targeted radiation", "Short-course therapy"],
@@ -110,7 +110,7 @@ const treatments: TreatmentData[] = [
   },
   {
     title: "Combined Modality Cancer Treatment",
-    image: "/images/cancer-treatment/prt.jpg",
+    image: "/images/cancer-treatment/Combined.jpg",
     description:
       "Combined modality therapy integrates radiation with chemotherapy, immunotherapy, or surgery for optimal outcomes.",
     techniques: [
@@ -159,11 +159,8 @@ export default function CancerTreatmentSection() {
 
   return (
     <section
-      className="md:py-20 py-10 -mt-15 relative overflow-hidden bg-secondary/15"
-      style={{
-        clipPath:
-          "polygon(0 60px, 12% 60px, 22% 0, 78% 0, 88% 60px, 100% 60px, 100% 100%, 0 100%)",
-      }}
+      className="md:py-20 py-10 md:-mt-15 relative overflow-hidden bg-secondary/15 
+  md:[clip-path:polygon(0_60px,12%_60px,22%_0,78%_0,88%_60px,100%_60px,100%_100%,0_100%)]"
     >
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">

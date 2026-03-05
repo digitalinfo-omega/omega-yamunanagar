@@ -15,7 +15,7 @@ const OurTeamSection = () => {
     <section className="bg-[#F4F6F7] md:py-20 pt-12">
       <div className="container">
         <div className="grid lg:grid-cols-2 md:gap-14 gap-7 items-stretch">
-          <div className="flex flex-col gap-5 h-full">
+          <div className="flex flex-col md:gap-5 gap-10 h-full">
             <div className="flex flex-col gap-6 md:items-start items-center justify-center">
               <span
                 data-aos="fade-up"
@@ -53,7 +53,7 @@ const OurTeamSection = () => {
               <h3
                 data-aos="fade-up"
                 data-aos-duration="1000"
-                data-aos-delay="600"
+                data-aos-delay="400"
                 className="para font-semibold"
               >
                 Team Composition:
